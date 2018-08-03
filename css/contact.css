@@ -1,0 +1,23 @@
+body {
+    font-family: 'Markazi Text', serif;
+    margin: 0;
+    padding: 0;
+}
+
+#aboutBlock {
+    text-align: center;
+    height: 560px;
+    margin-top: 4%;
+    box-sizing: 0px 0px 1px 1px #ccc;
+}
+
+#aboutScreen{
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    color: wheat;
+}
