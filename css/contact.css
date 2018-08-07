@@ -1,12 +1,6 @@
-body {
-    font-family: 'Markazi Text', serif;
-    margin: 0;
-    padding: 0;
-}
-
 #contactBlock {
     text-align: center;
-    height: 560px;
+    height: 670px;
     margin-top: 4%;
     box-sizing: 0px 0px 1px 1px #ccc;
 }
@@ -20,4 +14,62 @@ body {
     padding: 20px;
     border-radius: 10px;
     color: wheat;
+}
+
+#contactHead{
+    font-size: 50px;
+    font-weight: bold;    
+    padding: 20px;
+    margin: 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+#contact-form{
+    padding: 10px;
+}
+
+.contactForms{
+    background: transparent;
+    border-top: rgba(0, 0, 0, 0);
+    border-right: rgba(0, 0, 0, 0);
+    border-left: rgba(0, 0, 0, 0);
+    outline: none;
+    width: 400px;
+    color: wheat;
+    height: 50px;
+    font-size: 25px;
+}
+
+#contact-form .input-form label {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    padding: 10px 0;
+    font-size: 35px;
+    pointer-events: none;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+#contact-form .input-form input:focus~label {
+    top: 0;
+    color: rgb(15, 180, 84);
+    font-size: 25px;
+}
+
+#message-form-contact{
+    background: transparent;
+    outline: none;
+    width: 400px;
+    color: wheat;
+    height: 50px;
+    font-size: 25px;
+    height: 200px;
+}
+
+#contact-form .input-form textarea:focus~label {
+    top: -20px;
+    color: rgb(15, 180, 84);
+    font-size: 25px;
 }

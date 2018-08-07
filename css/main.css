@@ -146,7 +146,7 @@ li {
     cursor: pointer;
 }
 
-#login-form, #create-account-form {
+#login-form, #create-account-form, #contact-form {
     text-align: center;
     display: inline-block;
 }
