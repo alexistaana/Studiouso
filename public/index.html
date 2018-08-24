@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="media.css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+            crossorigin="anonymous">
+
+        <title>Homepage</title>
+
+    </head>
+
+    <body>
+        <main>
+            <div id="bckground">
+                <div id="tempBac">
+                    <div class="wrap">
+                        <!-- MENU BAR -->
+                        <nav id="navBar">
+                            <h1 class="logo navSelection" href="dashboard.html">
+                                <i class="fas fa-book-reader"> Studiouso</i>
+                            </h1>
+                            <ul id="list">
+                                <li id="homeBtn">
+                                    <a href="index.html" class="navSelection">Home</a>
+                                </li>
+                                <li>
+                                    <a href="about.html" class="navSelection">About</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html" class="navSelection">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- LOGIN/CREATE ACCOUNT BOX AREA -->
+                    <div id="loginBlock" style="width: 100%">
+                        <div id="loginScreen">
+                            <div id="loginContent">
+                                <ul id="loginList">
+                                    <li id="loginScreenSelect">
+                                        <a class="loginSelection">
+                                            <b>Login</b>
+                                        </a>
+                                    </li>
+                                    <li id="createAccScreenSelect">
+                                        <a class="loginSelection">
+                                            <b>Create Account</b>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <form action="#" id="login-form">
+                                <div class="input-form">
+                                    <input type="text" class="logForms"
+                                        id="username-form-login"
+                                        aria-labelledby="Username of user"
+                                        required="">
+                                    <label>username</label>
+                                    <!-- <input type="text" id="username-form-login" placeholder=""> -->
+                                </div>
+                                <div class="input-form">
+                                    <input type="password" class="logForms"
+                                        id="password-form-login"
+                                        aria-labelledby="Password of user"
+                                        required="">
+                                    <label>password</label>
+                                </div>
+                                <input id="login-account-btn" class="submit-btn"
+                                    type="submit" value="log in">
+                            </form>
+
+                            <form action="#" id="create-account-form"
+                                class="tempHidden" style="display: none;">
+                                <div class="input-form">
+                                    <input type="text" class="logForms"
+                                        id="username-form-create"
+                                        aria-labelledby="Username of user"
+                                        required="">
+                                    <label>username</label>
+                                </div>
+                                <div class="input-form">
+                                    <input type="password" class="logForms"
+                                        id="password-form-create"
+                                        aria-labelledby="Password of user"
+                                        required="">
+                                    <label>password</label>
+                                </div>
+                                <div class="input-form">
+                                    <input type="text" class="logForms"
+                                        id="email-form-create"
+                                        aria-labelledby="Email of user"
+                                        required="">
+                                    <label>email</label>
+                                </div>
+                                <input id="create-account-btn"
+                                    class="submit-btn" type="submit"
+                                    value="create account">
+                                <div id="createSuc" style="display: none;
+                                    text-decoration: none; text-transform:
+                                    uppercase; font-size: 50px; color: rgb(15,
+                                    180, 84);">Account Created!</div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/javascript/app.js"></script>
+
+</html>

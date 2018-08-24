@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="media.css">
+        <link rel="stylesheet" type="text/css" media="screen"
+            href="dashboard.css">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+            crossorigin="anonymous">
+        <link
+            href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+            crossorigin="anonymous">
+
+        <title>Homepage</title>
+
+    </head>
+
+    <body>
+        <main>
+            <div id="bckground">
+                <div id="tempBac">
+                    <div class="wrap">
+                        <!-- MENU BAR -->
+                        <nav id="navBar">
+                            <h1 id="logoBtn" class="logo navSelection">
+                                <i class="fas fa-book-reader"> Studiouso</i>
+                            </h1>
+                            <ul id="list">
+                                <li id="homeBtn">
+                                    <a class="navSelection">Home</a>
+                                </li>
+                                <li id="aboutBtn">
+                                    <a class="navSelection">About</a>
+                                </li>
+                                <li id="contactBtn">
+                                    <a class="navSelection">Contact</a>
+                                </li>
+                                <li id="signOutBtn">
+                                    <a class="navSelection">Sign Out</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- DASH BOARD BLOCK -->
+                    <div id="dashBoardBlock">
+                        <nav id="dashBoardScreen">
+                            <ul id="dashBar">
+                                <li id="">
+                                    <a href="" class="navSelection">Daily
+                                        Tracker</a>
+                                </li>
+                                <li>
+                                    <a href="" class="navSelection">Plan Editor</a>
+                                </li>
+                                <li>
+                                    <a href="" class="navSelection">Task Editor</a>
+                                </li>
+                                <li>
+                                    <a class="navSelection">Calorie Calculator</a>
+                                </li>
+                                <li>
+                                    <a class="navSelection">BMI/BMR Calculator</a>
+                                </li>
+                                <li>
+                                    <a class="navSelection">Study Room</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <!-- STATS BLOCK -->
+                        <section id="statsBlock">
+                            <div id="statsScreen">
+                                <h1 class="statsHead">
+                                    Stats
+                                    <i class="fas fa-percentage"></i>
+                                </h1>
+
+                                <div>
+                                    <p id="statsOverview">
+                                        Currently no stats available!
+                                    </p>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- PLANNER BLOCK -->
+                        <section id="plannerBlock">
+                            <div id="plannerScreen">
+
+                                <div id="dailyTask">
+                                    <h1 id="todayHead">Today's Task</h1>
+                                    <h2 id="todayNo">You have no tasks today!
+                                        You are free to do whatever you want!</h2>
+                                    <div id="todayMsgDiv">
+                                        <h2 id="todayTitle"></h2>
+                                        <h3 id="todayMsg"></h3>
+                                    </div>
+                                </div>
+
+
+                                <div id="upcomingTasks">
+                                    <h1 id="upcomingHead">You currently have no
+                                        upcoming tasks. Why don't you add some
+                                        up?</h1>
+                                    <div id="todayMsgDiv">
+                                        <h2 id="todayTitle"></h2>
+                                        <h3 id="todayMsg"></h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/javascript/app.js"></script>
+    <script type="text/javascript" src="/javascript/dashBoard.js"></script>
+</html>
