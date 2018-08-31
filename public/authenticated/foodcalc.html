@@ -9,6 +9,8 @@
             href="../main.css" />
         <link rel="stylesheet" type="text/css" media="screen"
             href="../media.css">
+        <link rel="stylesheet" type="text/css" media="screen"
+            href="../authenticated/css/foodCalc.css">
         <link rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
@@ -33,14 +35,14 @@
                         <!-- MENU BAR -->
                         <nav id="navBar">
                             <h1 id="logoBtn" class="logo navSelection">
-                                <i  class="fas fa-book-reader"> Studiouso</i>
+                                <i class="fas fa-book-reader"> Studiouso</i>
                             </h1>
                             <ul id="list">
                                 <li id="homeBtn">
-                                    <a  class="navSelection">Home</a>
+                                    <a class="navSelection">Home</a>
                                 </li>
                                 <li id="aboutBtn">
-                                    <a  class="navSelection">About</a>
+                                    <a class="navSelection">About</a>
                                 </li>
                                 <li id="contactBtn">
                                     <a class="navSelection">Contact</a>
@@ -51,6 +53,70 @@
                             </ul>
                         </nav>
                     </div>
+                    <section id="foodBlock">
+                        <div id="foodScreen">
+                            <div id="foodContent">
+                                <ul id="foodList">
+                                    <li id="bmrScreenSelect">
+                                        <a class="foodSelection">
+                                            <b>BMR</b>
+                                        </a>
+                                    </li>
+                                    <li id="bmiScreenSelect">
+                                        <a class="foodSelection">
+                                            <b>BMI</b>
+                                        </a>
+                                    </li>
+                                    <li id="calorieScreenSelect">
+                                        <a class="foodSelection">
+                                            <b>Calories</b>
+                                        </a>
+                                    </li>
+                                </ul>
+
+
+                                <form action="#" id="bmr-form">
+                                    <select>
+                                        <option value="Male">Male</option>
+                                        <option value="Male">Female</option>
+                                    </select>
+                                    <div>
+
+                                    </div>
+                                    <input type="text" class="foodForms"
+                                        id="age-form-calc" aria-labelledby="Age
+                                        of user" required="">
+                                    <label for="#age-form-calc">Age</label>
+
+
+
+                                    <!-- <div class="food-form">
+                                        <input type="text" class="logForms"
+                                            id="username-form-login"
+                                            aria-labelledby="Username of user"
+                                            required="">
+                                        <label>username</label>
+                                    </div>
+                                    <div class="input-form">
+                                        <input type="password" class="logForms"
+                                            id="password-form-login"
+                                            aria-labelledby="Password of user"
+                                            required="">
+                                        <label>password</label>
+                                    </div>
+                                    <input id="login-account-btn"
+                                        class="submit-btn"
+                                        type="submit" value="log in"> -->
+                                </form>
+
+
+                            </div>
+
+                            <!-- <header>
+                                <h1 id="aboutHead">About</h1>
+                            </header> -->
+                        </div>
+                    </section>
 
                 </div>
             </div>
@@ -59,5 +125,5 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../javascript/app.js"></script>
-    <script type="text/javascript" src="../javascript/dashBoard.js"></script>
+    <script type="text/javascript" src="../javascript/foodCalc.js"></script>
 </html>

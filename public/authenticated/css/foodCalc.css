@@ -1,0 +1,67 @@
+body {
+    font-family: 'Markazi Text', serif;
+    margin: 0;
+    padding: 0;
+}
+
+#foodBlock {
+    text-align: center;
+    height: 560px;
+    margin-top: 4%;
+    box-sizing: 0px 0px 1px 1px #ccc;
+}
+
+#foodScreen{
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    color: wheat;
+}
+
+#foodList {
+    list-style: none;
+    display: inline-flex;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.foodSelection {
+    text-align: center;
+    padding: 10px;
+    margin: 30px;
+    font-size: 30px;
+    transition: .5s;
+    /* border: solid wheat; */
+    /* opacity: 1; */
+}
+
+.foodSelection:hover {
+    /* font-size: 40px; */
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 40px #ffffff;
+    cursor: pointer;
+}
+
+/* 
+#aboutHead{
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+#aboutText
+{
+    text-align: left;
+    font-size: 22px;
+    /* padding: 5px; */
+    /* margin-left: 20px;
+    margin-top: 0;
+} */ 

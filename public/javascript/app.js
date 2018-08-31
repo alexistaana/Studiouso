@@ -1,7 +1,11 @@
 $(document).ready(function () {
   const LOCAL_API_CREATE_URL = '/api/users'
+  const GOOGLE_CLIENT_ID = '89833703730-q99g26m9i2silsvrap9ajdcuv1r7jcao.apps.googleusercontent.com';
+  const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6';
+  const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04';
 
-  function ShowLoginSelection () {
+
+  function showLoginSelection () {
     $('#loginScreenSelect').on('click', function (e) {
       e.preventDefault()
       $('#create-account-form').fadeOut(500, function (e) {
@@ -10,7 +14,7 @@ $(document).ready(function () {
     })
   }
 
-  function ShowCreateAccSelection () {
+  function showCreateAccSelection () {
     $('#createAccScreenSelect').on('click', function (e) {
       e.preventDefault()
       $('#login-form').fadeOut(500, function (e) {
@@ -29,7 +33,7 @@ $(document).ready(function () {
 
     const settings =
     {
-      url: LOCAL_API_CREATE_URL,
+      url: '/api/users',
       data: JSON.stringify(query),
       contentType: 'application/json',
       dataType: 'json',
@@ -47,7 +51,7 @@ $(document).ready(function () {
       username: `${username}`,
       password: `${password}`
     }
-
+    
     const auth = localStorage.getItem('authToken')
 
     const settings =
@@ -64,17 +68,34 @@ $(document).ready(function () {
     $.ajax(settings)
   }
 
-  function checkJwtHome (callback, errorCallBack) {
-    const auth = localStorage.getItem('authToken')
+
+  function checkAuth(callback, errorCallBack){
+    const auth = localStorage.getItem('authToken');
+
     const settings =
     {
-      url: '/auth/',
+      url: '/checkAuth',
       type: 'GET',
       contentType: 'application/json',
-      dataType: 'json',
       success: callback,
-      error: errorCallback,
+      error: errorCallBack,
       header: {Authorization: `Bearer ${auth}`}
+    }
+    $.ajax(settings)
+  }
+
+  function checkJwtHome (callback, errorCallBack) {
+    const auth = localStorage.getItem('authToken');
+    console.log(auth);
+
+    const settings =
+    {
+      url: '/dashboard',
+      type: 'GET',
+      contentType: 'application/json',
+      success: callback,
+      error: errorCallBack
+      // header: {Authorization: `Bearer ${auth}`}
     }
     $.ajax(settings)
   }
@@ -82,16 +103,44 @@ $(document).ready(function () {
   function checkJwtAbout (callback, errorCallBack) {
     const auth = localStorage.getItem('authToken');
 
-    console.log(auth);
+    const settings =
+    {
+      url: '/authenticated/about',
+      type: 'GET',
+      contentType: 'application/json',
+      success: callback,
+      error: errorCallBack,
+      headers: {Authorization: `Bearer ${auth}`}
+    }
+
+    $.ajax(settings)
+  }
+
+  function checkJwtContact (callback, errorCallBack) {
+    const auth = localStorage.getItem('authToken');
 
     const settings =
     {
-      url: '/auth/about',
-      type: 'GET', 
+      url: '/authenticated/contact',
+      type: 'GET',
       contentType: 'application/json',
-      dataType: 'json',
-      success: function(e){console.log('success!')},
-      error: function(e){console.log('failure :(')},
+      success: callback,
+      error: errorCallBack,
+      headers: {Authorization: `Bearer ${auth}`}
+    }
+    $.ajax(settings)
+  }
+
+  function checkJwtFoodCalc (callback, errorCallBack) {
+    const auth = localStorage.getItem('authToken');
+
+    const settings =
+    {
+      url: '/authenticated/foodcalc',
+      type: 'GET',
+      contentType: 'application/json',
+      success: callback,
+      error: errorCallBack,
       headers: {Authorization: `Bearer ${auth}`}
     }
 
@@ -99,52 +148,63 @@ $(document).ready(function () {
   }
 
   function watchNavAuthBtns () {
-    // $('#logoBtn').click(event => {
-    //   checkJWT(function (e) {
-    //     window.location.href = '/'
-    //   }, function (e) {
-    //     window.location.href = 'index.js'
-    //   })
-    // })
 
-    // $('#homeBtn').click(event => {
-    //   checkJWT(function (e) {
-    //     window.location.href = '/dashboard'
-    //   }, function (e) {
-    //     window.location.href = '/index.html'
-    //   })
-    // })
-
-    $('#aboutBtn').click(event => {
-
-        console.log('hai');
-      checkJwtAbout(function (e) {
-        // window.location.href = '/authenticated/about'
-        console.log(e);
-        console.log('Success!');
-
-      }, function (e) {
-        // window.location.href = '/about.html'
-        console.log(e);
-        console.log('you got logged out :(');
+    $('#logoBtn').click(event => {
+      checkJwtHome(function (response) {
+        $('body').html(response)
+      }, function (response) {
+        window.location.href = '/index.html'
       })
     })
 
-    // $('#contactBtn').click(event => {
-    //   checkJWT(function (e) {
-    //     window.location.href = '/auth/contact'
-    //   }, function (e) {
-    //     window.location.href = '/contact.html'
-    //   })
-    // })
+    $('#homeBtn').click(event => {
+      checkJwtHome(function (response) {
+        $('body').html(response)
+      }, function (response) {
+        console.log('failure! :(');
+        // window.location.href = '/index.html'
+      })
+    })
 
-  // $('#signOutBtn').click(event => {
-  //   checkJWT(function (e) {
-  //     window.location.href = '/dashboard'
-  //   }, function (e) {
-  //     window.location.href = '/about.html'
-  //   })
-  // })
+    $('#aboutBtn').click(event => {
+      checkJwtAbout(function (response) {
+        console.log(response);
+        // window.location.href = response;
+        // $('body').html(response)
+      }, function (response) {
+        window.location.href = '/about'
+      })
+    })
+
+    $('#healthBtn').click(event => {
+
+      // console.log('hai');
+
+      checkJwtFoodCalc(function (response) {
+        $('body').html(response)
+      }, function (response) {
+        // console.log('ERROR!');
+        window.location.href = '/contact.html'
+      })
+    })
+
+    $('#contactBtn').click(event => {
+      checkJwtContact(function (response) 
+      {
+        // window.location = response;
+        // $('body').html(response)
+      }, function (response) {
+        // console.log('ERROR!');
+        window.location.href = '/contact.html'
+      })
+    })
+
+    // REDIRECTS USER TO LOGIN PAGE AND REMOVES LOCAL STORAGE(JWT)
+    $('#signOutBtn').click(event => {
+      localStorage.removeItem("authToken");
+      window.location.href = '/index.html';
+    })
+
   }
 
   // WATCHES THE CREATE ACCOUNT SUBMIT BUTTON
@@ -171,8 +231,6 @@ $(document).ready(function () {
     })
   }
 
-  // $('#login-account-btn').click(console.log('clicked!'))
-
   function watchLoginSubmit () {
     $('#login-form').submit(event => {
       event.preventDefault()
@@ -186,15 +244,17 @@ $(document).ready(function () {
       targetOne.val('')
       targetTwo.val('')
 
-      requestLoginAccount(queryOne, queryTwo, function () {
+      requestLoginAccount(queryOne, queryTwo, function (response) {
+        
+        localStorage.setItem("authToken", response.authToken);
         window.location.href = '/dashboard'
       })
     })
   }
 
   function init () {
-    $(ShowLoginSelection)
-    $(ShowCreateAccSelection)
+    $(showLoginSelection)
+    $(showCreateAccSelection)
     $(watchCreateSubmit)
     $(watchLoginSubmit)
     $(watchNavAuthBtns)
@@ -209,4 +269,4 @@ $(document).ready(function () {
   //     headers: {"Authorization": localStorage.getItem('token')}
   //   })
 
-})
+});
