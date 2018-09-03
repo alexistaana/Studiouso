@@ -4,14 +4,25 @@ body {
     padding: 0;
 }
 
+#foodBac {
+    background-image: url('../../img/img2.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
 #foodBlock {
     text-align: center;
-    height: 560px;
+    height: 640px;
     margin-top: 4%;
     box-sizing: 0px 0px 1px 1px #ccc;
 }
 
-#foodScreen{
+#foodScreen {
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     display: inline-block;
@@ -46,22 +57,160 @@ body {
     cursor: pointer;
 }
 
-/* 
-#aboutHead{
-    text-align: left;
-    font-size: 50px;
-    font-weight: bold;
-    padding: 20px;
-    margin: 0;
-    padding-bottom: 10px;
+.checkBox {
+    /* display: inline-block; */
+    /* text-transform: uppercase; */
+}
+
+.selectContent {
+    display: inline-flex;
+}
+
+.selectText {
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.selectText:hover {
+    transition: .5s;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 40px #ffffff;
+    cursor: pointer;
+}
+
+.inputStyle {
+    margin-left: 40px;
+    display: inline-flex;
+    /* display: none; */
+}
+
+.foodForms {
+    padding: 30px;
+    position: relative;
+    display: inline-flex;
+}
+
+.foodForms label {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    padding: 10px 0;
+    font-size: 35px;
+    pointer-events: none;
+    transition: .5s;
     text-transform: uppercase;
 }
 
-#aboutText
-{
-    text-align: left;
-    font-size: 22px;
-    /* padding: 5px; */
-    /* margin-left: 20px;
-    margin-top: 0;
-} */ 
+/* #height-form-calc input:focus~label, #height-form-calc input:valid~label{
+    top: 0;
+    color: rgb(15, 180, 84);
+    font-size: 25px;
+}
+
+#height-form-calc-in input:focus~label, #height-form-calc-in input:valid~label{
+    top: 0;
+    color: rgb(15, 180, 84);
+    font-size: 25px;
+} */
+
+
+.foodForms input:focus~label, .foodForms input:valid~label {
+    top: 0;
+    color: rgb(15, 180, 84);
+    font-size: 25px;
+}
+
+.inputHeight {
+    width: 190px;
+    margin-right: 21px;
+}
+
+/* .inputHeight input{
+    margin: 10px;
+} */
+
+.fa-arrow-alt-circle-left {
+    position: relative;
+    top: 14px;
+    right: 20px;
+    font-size: 40px;
+}
+
+.gendLabel {
+    font-size: 35px;
+    margin: 20px;
+}
+
+#weightBmrBox, #heightBmrBox, #genderBmrBox {
+    display: none;
+}
+
+/* input[type=checkbox] + label:before{
+    background: transparent;
+    color: whitesmoke;
+} */
+
+/* input[type=checkbox] + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+  } */
+
+/*   
+  input[type=checkbox] {
+    display: none; */
+
+/* content: "\2714";
+    border: 0.1em solid wheat;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s; */
+
+/* } */
+
+/* input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 3.2px solid wheat;
+    border-radius: 30px;
+    display: inline-block;
+    width: 1.1em;
+    height: 1em;
+    padding-left: 0.3em;
+    padding-bottom: 0.3em;
+    padding: 0.3em;
+    margin-right: 0.3em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  } */
+
+/* input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  } */
+
+/* input[type=checkbox]:checked + label:before {
+    /* background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen; */
+
+/* color: rgb(15, 180, 84);
+    color: black;
+    } */
+
+/* input[type=checkbox]:disabled + label:before {
+    transform: scale(1);
+    border-color: #aaa;
+  }
+  
+  input[type=checkbox]:checked:disabled + label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
+  } */

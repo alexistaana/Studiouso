@@ -1,9 +1,8 @@
 $(document).ready(function () {
   const LOCAL_API_CREATE_URL = '/api/users'
-  const GOOGLE_CLIENT_ID = '89833703730-q99g26m9i2silsvrap9ajdcuv1r7jcao.apps.googleusercontent.com';
-  const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6';
-  const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04';
-
+  const GOOGLE_CLIENT_ID = '89833703730-q99g26m9i2silsvrap9ajdcuv1r7jcao.apps.googleusercontent.com'
+  const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6'
+  const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04'
 
   function showLoginSelection () {
     $('#loginScreenSelect').on('click', function (e) {
@@ -51,7 +50,7 @@ $(document).ready(function () {
       username: `${username}`,
       password: `${password}`
     }
-    
+
     const auth = localStorage.getItem('authToken')
 
     const settings =
@@ -68,9 +67,10 @@ $(document).ready(function () {
     $.ajax(settings)
   }
 
-
-  function checkAuth(callback, errorCallBack){
-    const auth = localStorage.getItem('authToken');
+  // SENDS A REQUEST TO THE SERVER TO CHECK IF JWT IS VALID
+  function checkAuth (callback, errorCallBack) {
+    const auth = localStorage.getItem('authToken')
+    console.log(auth)
 
     const settings =
     {
@@ -79,132 +79,70 @@ $(document).ready(function () {
       contentType: 'application/json',
       success: callback,
       error: errorCallBack,
-      header: {Authorization: `Bearer ${auth}`}
-    }
-    $.ajax(settings)
-  }
-
-  function checkJwtHome (callback, errorCallBack) {
-    const auth = localStorage.getItem('authToken');
-    console.log(auth);
-
-    const settings =
-    {
-      url: '/dashboard',
-      type: 'GET',
-      contentType: 'application/json',
-      success: callback,
-      error: errorCallBack
-      // header: {Authorization: `Bearer ${auth}`}
-    }
-    $.ajax(settings)
-  }
-
-  function checkJwtAbout (callback, errorCallBack) {
-    const auth = localStorage.getItem('authToken');
-
-    const settings =
-    {
-      url: '/authenticated/about',
-      type: 'GET',
-      contentType: 'application/json',
-      success: callback,
-      error: errorCallBack,
-      headers: {Authorization: `Bearer ${auth}`}
-    }
-
-    $.ajax(settings)
-  }
-
-  function checkJwtContact (callback, errorCallBack) {
-    const auth = localStorage.getItem('authToken');
-
-    const settings =
-    {
-      url: '/authenticated/contact',
-      type: 'GET',
-      contentType: 'application/json',
-      success: callback,
-      error: errorCallBack,
       headers: {Authorization: `Bearer ${auth}`}
     }
     $.ajax(settings)
   }
 
-  function checkJwtFoodCalc (callback, errorCallBack) {
-    const auth = localStorage.getItem('authToken');
+  // CALL FUNCTION FOR BTN REDIRECT WHEN CLICKED
+  function checkAuthCall () {
+    checkAuth(function (response) {
+      const redirectTo = localStorage.getItem('btnClick')
 
-    const settings =
-    {
-      url: '/authenticated/foodcalc',
-      type: 'GET',
-      contentType: 'application/json',
-      success: callback,
-      error: errorCallBack,
-      headers: {Authorization: `Bearer ${auth}`}
-    }
-
-    $.ajax(settings)
+      if (redirectTo == 'about') {
+        window.location.href = '/authenticated/about'
+      }
+      else if (redirectTo == 'contact') {
+        window.location.href = '/authenticated/contact'
+      }
+      else if (redirectTo == 'dash') {
+        window.location.href = '/authenticated/dashboard'
+      }
+      else if (redirectTo == 'foodCalc') {
+        window.location.href = '/authenticated/foodcalc'
+      }else{
+        console.log('ERROR!!!');
+      }
+    }, function (response) {
+      window.alert('Session expired! Redirecting back to login page...')
+      window.location.href = '/'
+    })
   }
 
   function watchNavAuthBtns () {
 
+    // let ifClicked = false
+
     $('#logoBtn').click(event => {
-      checkJwtHome(function (response) {
-        $('body').html(response)
-      }, function (response) {
-        window.location.href = '/index.html'
-      })
+      localStorage.setItem("btnClick" , "dash")
+      checkAuthCall()
     })
 
     $('#homeBtn').click(event => {
-      checkJwtHome(function (response) {
-        $('body').html(response)
-      }, function (response) {
-        console.log('failure! :(');
-        // window.location.href = '/index.html'
-      })
+      localStorage.setItem('btnClick' , 'dash')
+      checkAuthCall()
     })
 
     $('#aboutBtn').click(event => {
-      checkJwtAbout(function (response) {
-        console.log(response);
-        // window.location.href = response;
-        // $('body').html(response)
-      }, function (response) {
-        window.location.href = '/about'
-      })
+      localStorage.setItem('btnClick' , 'about')
+      checkAuthCall()
     })
 
     $('#healthBtn').click(event => {
-
-      // console.log('hai');
-
-      checkJwtFoodCalc(function (response) {
-        $('body').html(response)
-      }, function (response) {
-        // console.log('ERROR!');
-        window.location.href = '/contact.html'
-      })
+      localStorage.setItem('btnClick' , 'foodCalc')
+      checkAuthCall()
     })
 
     $('#contactBtn').click(event => {
-      checkJwtContact(function (response) 
-      {
-        // window.location = response;
-        // $('body').html(response)
-      }, function (response) {
-        // console.log('ERROR!');
-        window.location.href = '/contact.html'
-      })
+      localStorage.setItem('btnClick' , 'contact')
+      checkAuthCall()
     })
 
     // REDIRECTS USER TO LOGIN PAGE AND REMOVES LOCAL STORAGE(JWT)
     $('#signOutBtn').click(event => {
-      localStorage.removeItem("authToken");
-      window.location.href = '/index.html';
+      localStorage.removeItem('authToken')
+      window.location.href = '/'
     })
-
   }
 
   // WATCHES THE CREATE ACCOUNT SUBMIT BUTTON
@@ -245,8 +183,8 @@ $(document).ready(function () {
       targetTwo.val('')
 
       requestLoginAccount(queryOne, queryTwo, function (response) {
-        
-        localStorage.setItem("authToken", response.authToken);
+        localStorage.setItem('authToken', response.authToken)
+        // console.log('success!');
         window.location.href = '/dashboard'
       })
     })
@@ -269,4 +207,4 @@ $(document).ready(function () {
   //     headers: {"Authorization": localStorage.getItem('token')}
   //   })
 
-});
+})

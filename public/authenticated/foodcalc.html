@@ -23,14 +23,14 @@
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
             crossorigin="anonymous">
 
-        <title>Homepage</title>
+        <title>Health Calculators</title>
 
     </head>
 
     <body>
         <main>
             <div id="bckground">
-                <div id="tempBac">
+                <div id="foodBac">
                     <div class="wrap">
                         <!-- MENU BAR -->
                         <nav id="navBar">
@@ -75,55 +75,78 @@
                                 </ul>
 
 
+                                <!-- BMR CALCULATOR FORM -->
                                 <form action="#" id="bmr-form">
-                                    <select>
-                                        <option value="Male">Male</option>
-                                        <option value="Male">Female</option>
-                                    </select>
+                                    <div class="checkBox" id="checkWeightDiv">
+                                        <h1 style="font-size: 35px">WEIGHT?</h1>
+                                        <div class="selectContent">
+                                            <h2 class="selectText"
+                                                id="poundSelect">POUND (lb)</h2>
+                                            <h2 class="selectText"
+                                                id="kilogramSelect">KILOGRAM
+                                                (kg)</h2>
+                                        </div>
+                                    </div>
+
+                                    <div id="weightBmrBox">
+                                    </div>
+
+                                    <div class="checkBox" id="checkHeightDiv">
+                                        <h2 style="font-size: 35px">HEIGHT?</h2>
+                                        <div class="selectContent">
+                                            <h2 class="selectText"
+                                                id="feetSelect">FEET/INCHES
+                                                (ft/in)</h2>
+                                            <h2 class="selectText"
+                                                id="centimeterSelect">
+                                                CENTIMETERS (cm)</h2>
+                                        </div>
+                                    </div>
+
+                                    <div id="heightBmrBox">
+                                    </div>
+
                                     <div>
-
+                                        <div class="foodForms inputStyle">
+                                            <input type="text" class="logForms"
+                                                id="age-form-calc"
+                                                aria-labelledby="Age
+                                                of user" required="">
+                                            <label for="age-form-calc">Age</label>
+                                        </div>
                                     </div>
-                                    <input type="text" class="foodForms"
-                                        id="age-form-calc" aria-labelledby="Age
-                                        of user" required="">
-                                    <label for="#age-form-calc">Age</label>
 
-
-
-                                    <!-- <div class="food-form">
-                                        <input type="text" class="logForms"
-                                            id="username-form-login"
-                                            aria-labelledby="Username of user"
-                                            required="">
-                                        <label>username</label>
+                                    <div class="checkBox" id="checkGenderDiv">
+                                        <h2 style="font-size: 35px">GENDER?</h2>
+                                        <div class="selectContent">
+                                            <h2 class="selectText"
+                                                id="maleBmrSelect">MALE</h2>
+                                            <h2 class="selectText"
+                                                id="femaleBmrSelect">
+                                                FEMALE</h2>
+                                        </div>
                                     </div>
-                                    <div class="input-form">
-                                        <input type="password" class="logForms"
-                                            id="password-form-login"
-                                            aria-labelledby="Password of user"
-                                            required="">
-                                        <label>password</label>
+
+                                    <div id="genderBmrBox">
                                     </div>
-                                    <input id="login-account-btn"
-                                        class="submit-btn"
-                                        type="submit" value="log in"> -->
+
+                                    <!-- <div class="checkBox">
+                                        <h2>Gender</h2>
+                                        <input type="checkbox"> <p>Male<p>  
+                                                <input type="checkbox"> <p>Female</p>
+                                            </input>
+                                        </div> -->
                                 </form>
-
-
                             </div>
+                        </section>
 
-                            <!-- <header>
-                                <h1 id="aboutHead">About</h1>
-                            </header> -->
-                        </div>
-                    </section>
-
+                    </div>
                 </div>
-            </div>
-        </main>
-    </body>
+            </main>
+        </body>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../javascript/app.js"></script>
-    <script type="text/javascript" src="../javascript/foodCalc.js"></script>
-</html>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="../javascript/app.js"></script>
+        <script type="text/javascript"
+            src="../javascript/foodCalc.js"></script>
+    </html>

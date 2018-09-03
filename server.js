@@ -7,6 +7,7 @@ const passport = require('passport')
 
 const { router: usersRouter } = require('./users')
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth')
+// const { router: endpointRouter } = require('./endpoint')
 
 mongoose.Promise = global.Promise
 
@@ -33,54 +34,51 @@ passport.use(jwtStrategy)
 
 app.use('/api/users/', usersRouter)
 app.use('/api/auth/', authRouter)
+// app.use('/app/', endpointRouter)
 
 const jwtAuth = passport.authenticate('jwt', { session: false })
 
 // app.get('/auth', jwtAuth, (req, res) =>{
 //   //CREATES NEW AUTH TOKEN
-// });
+// })
 
 app.get('/checkAuth', jwtAuth, (req, res) => {
-  // res.redirect('/dashboard');
-});
-
-app.get('/authenticated/dashboard', jwtAuth, (req, res) => {
-  // res.redirect('/dashboard');
-  res.sendFile(`${__dirname}/public/dashboard.html`);
-});
-
-app.get('/authenticated/contact', jwtAuth, (req, res) => {
-  window.location.href = `${__dirname}/public/authenticated/contact.html`;
-  // res.sendFile(`${__dirname}/public/authenticated/contact.html`);
-});
-
-app.get('/authenticated/about', jwtAuth, (req, res) => {
-  // res.send('authenticated/about.html');
-  // res.redirect('/about');
-  res.redirect('/about');
-  // res.sendFile(`${__dirname}/public/authenticated/about.html`);
-})
-
-app.get('/authenticated/foodcalc', jwtAuth, (req, res) => {
-  res.sendFile(`${__dirname}/public/authenticated/foodcalc.html`);
+  // res.redirect('/dashboard')
+  // CHECKS JWT TOKEN
+  res.send('Success!!')
 })
 
 app.get('/about', function (req, res) {
-  // location.window.href = '${__dirname}/public/authenticated/about.html'
-
-  // res.sendFile(${__dirname}/public/dashboard.html ))
   res.sendFile(`${__dirname}/public/about.html`)
+})
+
+app.get('/contact', function (req, res) {
+  res.sendFile(`${__dirname}/public/contact.html`)
+})
+
+app.get('/', function (req, res) {
+  res.sendFile('${__dirname}/public/index.html')
 })
 
 app.get('/dashboard', function (req, res) {
   res.sendFile(`${__dirname}/public/dashboard.html`)
 })
 
-// app.get('/page', jwtAuth, function (req, res) {
-//   // res.sendFile(${__dirname}/public/dashboard.html ))
+app.get('/authenticated/dashboard', (req, res) => {
+  res.sendFile(`${__dirname}/public/dashboard.html`)
+})
 
-//   res.sendFile(`${__dirname}/public/page.html`)
-// })
+app.get('/authenticated/contact', (req, res) => {
+  res.sendFile(`${__dirname}/public/authenticated/contact.html`)
+})
+
+app.get('/authenticated/about', (req, res) => {
+  res.sendFile(`${__dirname}/public/authenticated/about.html`)
+})
+
+app.get('/authenticated/foodcalc', (req, res) => {
+  res.sendFile(`${__dirname}/public/authenticated/foodcalc.html`)
+})
 
 let server
 

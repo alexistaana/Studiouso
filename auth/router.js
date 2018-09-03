@@ -30,8 +30,6 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 router.post('/refresh', jwtAuth, (req, res) => {
   const authToken = createAuthToken(req.user);
   // localStorage.setItem("authToken", `${authToken}`);
-  console.log(localStorage.getItem);
-  console.log("hai");
   res.json({authToken});
 });
 
