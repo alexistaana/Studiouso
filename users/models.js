@@ -15,13 +15,48 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    bmrResults:{
+        type: String,
+        required: false
+    },
+    bmiResults:{
+        type: String,
+        required: false
+    },
+    tasks:{
+        type: Object,
+        required: false,
+        description:{
+            type: Array,
+            required: false
+        },
+        date:{
+            type: Array,
+            required: false
+        }
+    },
+    schedule:{
+        type: Object,
+        required: false,
+        title:{
+            type: Array,
+            required: false
+        },
+        date:{
+            type: Array,
+            required: false
+        }
     }
 });
 
 UserSchema.methods.serialize = function () {
     return {
         username: this.username || '',
-        email: this.email || ''
+        email: this.email || '',
+        id: this._id || '',
+        bmrResults: this.bmrResults || '',
+        bmiResults: this.bmiResults || ''
     };
 };
 

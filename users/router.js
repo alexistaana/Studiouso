@@ -105,10 +105,30 @@ router.post('/', jsonParser, (req, res) => {
             return User.hashPassword(password);
         })
         .then(hash => {
+
+            let description = [];
+            let date = [];
+            let title = [];
+
+            let bmiResults = "0";
+            let bmrResults = "0";
+            let tasks = {
+                description,
+                date
+            }
+            let schedule ={
+                title,
+                date
+            }
+
             return User.create({
                 username,
                 password: hash,
-                email
+                email,
+                bmrResults,
+                bmiResults,
+                tasks,
+                schedule
             });
         })
         .then(user => {

@@ -122,3 +122,9 @@
     padding:30px;
     font-size: 100px;
 }
+
+#menuHead{
+    font-size: 100px;
+    margin: 20px;
+    border-bottom: solid wheat;
+}

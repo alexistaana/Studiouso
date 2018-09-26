@@ -4,7 +4,7 @@ $(document).ready(function () {
   const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6'
   const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04'
 
-  function showLoginSelection () {
+  function showLoginSelection() {
     $('#loginScreenSelect').on('click', function (e) {
       e.preventDefault()
       $('#create-account-form').fadeOut(500, function (e) {
@@ -13,7 +13,7 @@ $(document).ready(function () {
     })
   }
 
-  function showCreateAccSelection () {
+  function showCreateAccSelection() {
     $('#createAccScreenSelect').on('click', function (e) {
       e.preventDefault()
       $('#login-form').fadeOut(500, function (e) {
@@ -22,7 +22,7 @@ $(document).ready(function () {
     })
   }
 
-  function requestCreateAccount (username, password, email, callback) {
+  function requestCreateAccount(username, password, email, callback) {
     const query =
     {
       username: `${username}`,
@@ -38,14 +38,14 @@ $(document).ready(function () {
       dataType: 'json',
       type: 'POST',
       success: callback
-    // header: {Authorization: `Bearer $`}
+      // header: {Authorization: `Bearer $`}
     }
 
     $.ajax(settings)
   }
 
   // REQUESTS SERVER FOR LOGIN
-  function requestLoginAccount (username, password, callback) {
+  function requestLoginAccount(username, password, callback) {
     const query = {
       username: `${username}`,
       password: `${password}`
@@ -61,14 +61,14 @@ $(document).ready(function () {
       dataType: 'json',
       type: 'POST',
       success: callback,
-      header: {Authorization: `Bearer ${auth}`}
+      header: { Authorization: `Bearer ${auth}` }
     }
 
     $.ajax(settings)
   }
 
   // SENDS A REQUEST TO THE SERVER TO CHECK IF JWT IS VALID
-  function checkAuth (callback, errorCallBack) {
+  function checkAuth(callback, errorCallBack) {
     const auth = localStorage.getItem('authToken')
     console.log(auth)
 
@@ -79,13 +79,13 @@ $(document).ready(function () {
       contentType: 'application/json',
       success: callback,
       error: errorCallBack,
-      headers: {Authorization: `Bearer ${auth}`}
+      headers: { Authorization: `Bearer ${auth}` }
     }
     $.ajax(settings)
   }
 
   // CALL FUNCTION FOR BTN REDIRECT WHEN CLICKED
-  function checkAuthCall () {
+  function checkAuthCall() {
     checkAuth(function (response) {
       const redirectTo = localStorage.getItem('btnClick')
 
@@ -100,7 +100,11 @@ $(document).ready(function () {
       }
       else if (redirectTo == 'foodCalc') {
         window.location.href = '/authenticated/foodcalc'
-      }else{
+      } else if (redirectTo == 'taskEditor') {
+        console.log('hai')
+        window.location.href = '/authenticated/taskeditor'
+      }
+      else {
         console.log('ERROR!!!');
       }
     }, function (response) {
@@ -109,32 +113,37 @@ $(document).ready(function () {
     })
   }
 
-  function watchNavAuthBtns () {
+  function watchNavAuthBtns() {
 
     // let ifClicked = false
 
     $('#logoBtn').click(event => {
-      localStorage.setItem("btnClick" , "dash")
+      localStorage.setItem("btnClick", "dash")
       checkAuthCall()
     })
 
     $('#homeBtn').click(event => {
-      localStorage.setItem('btnClick' , 'dash')
+      localStorage.setItem('btnClick', 'dash')
       checkAuthCall()
     })
 
     $('#aboutBtn').click(event => {
-      localStorage.setItem('btnClick' , 'about')
+      localStorage.setItem('btnClick', 'about')
       checkAuthCall()
     })
 
     $('#healthBtn').click(event => {
-      localStorage.setItem('btnClick' , 'foodCalc')
+      localStorage.setItem('btnClick', 'foodCalc')
+      checkAuthCall()
+    })
+
+    $('#taskBtn').click(event => {
+      localStorage.setItem('btnClick', 'taskEditor')
       checkAuthCall()
     })
 
     $('#contactBtn').click(event => {
-      localStorage.setItem('btnClick' , 'contact')
+      localStorage.setItem('btnClick', 'contact')
       checkAuthCall()
     })
 
@@ -146,7 +155,7 @@ $(document).ready(function () {
   }
 
   // WATCHES THE CREATE ACCOUNT SUBMIT BUTTON
-  function watchCreateSubmit () {
+  function watchCreateSubmit() {
     $('#create-account-form').submit(event => {
       event.preventDefault()
       const targetOne = $(event.currentTarget).find('#username-form-create')
@@ -169,7 +178,7 @@ $(document).ready(function () {
     })
   }
 
-  function watchLoginSubmit () {
+  function watchLoginSubmit() {
     $('#login-form').submit(event => {
       event.preventDefault()
 
@@ -190,7 +199,7 @@ $(document).ready(function () {
     })
   }
 
-  function init () {
+  function init() {
     $(showLoginSelection)
     $(showCreateAccSelection)
     $(watchCreateSubmit)

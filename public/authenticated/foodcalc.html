@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,11 +66,11 @@
                                             <b>BMI</b>
                                         </a>
                                     </li>
-                                    <li id="calorieScreenSelect">
+                                    <!-- <li id="calorieScreenSelect">
                                         <a class="foodSelection">
                                             <b>Calories</b>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
 
 
@@ -95,8 +94,8 @@
                                         <h2 style="font-size: 35px">HEIGHT?</h2>
                                         <div class="selectContent">
                                             <h2 class="selectText"
-                                                id="feetSelect">FEET/INCHES
-                                                (ft/in)</h2>
+                                                id="feetSelect">FEET
+                                                (ft)</h2>
                                             <h2 class="selectText"
                                                 id="centimeterSelect">
                                                 CENTIMETERS (cm)</h2>
@@ -130,17 +129,84 @@
                                     <div id="genderBmrBox">
                                     </div>
 
-                                    <!-- <div class="checkBox">
-                                        <h2>Gender</h2>
-                                        <input type="checkbox"> <p>Male<p>  
-                                                <input type="checkbox"> <p>Female</p>
-                                            </input>
-                                        </div> -->
-                                </form>
-                            </div>
-                        </section>
 
-                    </div>
+                                    <div>
+                                        <input id="bmr-calculate-btn"
+                                            class="submit-btn" type="submit"
+                                            value="Calculate">
+                                    </div>
+
+                                    <div id="bmrResultsBox" style="display:
+                                        none;">
+                                        <div id="resultBmrDiv">
+
+                                        </div>
+                                        <div>
+                                            <input type="reset" value="RESET"
+                                                class="submit-btn"
+                                                id="resetBtnBmr">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- BMI CALCULATOR FORM -->
+                                <form action="#" id="bmi-form" style="display:
+                                    none;">
+
+                                    <div class="checkBox"
+                                        id="checkWeightBmiDiv">
+                                        <h1 style="font-size: 35px">WEIGHT?</h1>
+                                        <div class="selectContent">
+                                            <h2 class="selectText"
+                                                id="poundSelectBmi">POUND (lb)</h2>
+                                            <h2 class="selectText"
+                                                id="kilogramSelectBmi">KILOGRAM
+                                                (kg)</h2>
+                                        </div>
+                                    </div>
+
+                                    <div id="weightBmiBox">
+                                    </div>
+
+                                    <div class="checkBox"
+                                        id="checkHeightBmiDiv">
+                                        <h2 style="font-size: 35px">HEIGHT?</h2>
+                                        <div class="selectContent">
+                                            <h2 class="selectText"
+                                                id="feetSelectBmi">FEET
+                                                (ft)</h2>
+                                            <h2 class="selectText"
+                                                id="centimeterSelectBmi">
+                                                CENTIMETERS (cm)</h2>
+                                        </div>
+                                    </div>
+
+                                    <div id="heightBmiBox">
+                                    </div>
+
+                                    <div>
+                                        <input id="bmi-calculate-btn"
+                                            class="submit-btn" type="submit"
+                                            value="Calculate">
+                                    </div>
+
+                                    <div id="bmiResultsBox" style="display:
+                                        none;">
+                                        <div id="resultBmiDiv">
+
+                                        </div>
+                                        <div>
+                                            <input type="reset" value="RESET"
+                                                class="submit-btn"
+                                                id="resetBtnBmi">
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </section>
                 </div>
             </main>
         </body>

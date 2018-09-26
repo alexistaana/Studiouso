@@ -1,0 +1,61 @@
+#taskBac {
+    background-image: url('../../img/img3.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+#taskBlock {
+    text-align: center;
+    height: 680px;
+    margin-top: 4%;
+    box-sizing: 0px 0px 1px 1px #ccc;
+}
+
+#taskScreen {
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    color: wheat;
+}
+
+#calendarMonth{
+    margin: 15px;
+    font-size: 50px;
+    border-bottom: solid wheat;
+    padding-bottom: 25px;
+}
+
+#daysInCalendar, #daysOfMonth{
+    padding: 0;
+}
+
+#daysInCalendar li{
+    display: inline-block;
+    width: 9.5%;
+    padding: 1.9%;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: solid;
+    border-right: solid;
+    border-width: 1px;
+}
+
+#daysOfMonth li{
+    display: inline-block;
+    width: 9.5%;
+    padding: 2.02%;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: solid;
+    border-right: solid;
+    border-width: 1px;
+}

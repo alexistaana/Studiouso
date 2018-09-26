@@ -17,7 +17,7 @@ body {
 
 #foodBlock {
     text-align: center;
-    height: 640px;
+    height: 680px;
     margin-top: 4%;
     box-sizing: 0px 0px 1px 1px #ccc;
 }
@@ -34,6 +34,7 @@ body {
 }
 
 #foodList {
+    padding: 0px;
     list-style: none;
     display: inline-flex;
     text-transform: uppercase;
@@ -57,11 +58,6 @@ body {
     cursor: pointer;
 }
 
-.checkBox {
-    /* display: inline-block; */
-    /* text-transform: uppercase; */
-}
-
 .selectContent {
     display: inline-flex;
 }
@@ -71,12 +67,17 @@ body {
     margin-top: 0px;
 }
 
-.selectText:hover {
+.selectText:hover, #weightBmrArrow:hover, #heightBmrArrow:hover, #gendBmrArrow:hover, #submitBackArrow:hover, 
+#heightBmiArrow:hover, #weightBmiArrow:hover{
     transition: .5s;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
     cursor: pointer;
 }
+
+/* #weightBmrArrow, #heightBmrArrow{
+    
+} */
 
 .inputStyle {
     margin-left: 40px;
@@ -113,21 +114,11 @@ body {
     font-size: 25px;
 } */
 
-
 .foodForms input:focus~label, .foodForms input:valid~label {
     top: 0;
     color: rgb(15, 180, 84);
     font-size: 25px;
 }
-
-.inputHeight {
-    width: 190px;
-    margin-right: 21px;
-}
-
-/* .inputHeight input{
-    margin: 10px;
-} */
 
 .fa-arrow-alt-circle-left {
     position: relative;
@@ -145,72 +136,29 @@ body {
     display: none;
 }
 
-/* input[type=checkbox] + label:before{
-    background: transparent;
-    color: whitesmoke;
-} */
+#storeBmrBtn, #storeBmiBtn{
+    font-size: 30px;
+    position: relative;
+    top: 7px;
+    color: #33cc33;
+    text-transform: uppercase;
+}
 
-/* input[type=checkbox] + label {
-    display: block;
-    margin: 0.2em;
+#storeBmrBtn:hover, #storeBmiBtn:hover {
+    transition: .5s;
+    color: #00ff00;
+    text-shadow: 0 0 40px #00ff00;
     cursor: pointer;
-    padding: 0.2em;
-  } */
+}
 
-/*   
-  input[type=checkbox] {
-    display: none; */
+#submitBackArrow {
+    top: 28px;
+    left: -5px;
+}
 
-/* content: "\2714";
-    border: 0.1em solid wheat;
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
-    padding-bottom: 0.3em;
-    margin-right: 0.2em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s; */
-
-/* } */
-
-/* input[type=checkbox] + label:before {
-    content: "\2714";
-    border: 3.2px solid wheat;
-    border-radius: 30px;
-    display: inline-block;
-    width: 1.1em;
-    height: 1em;
-    padding-left: 0.3em;
-    padding-bottom: 0.3em;
-    padding: 0.3em;
-    margin-right: 0.3em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s;
-  } */
-
-/* input[type=checkbox] + label:active:before {
-    transform: scale(0);
-  } */
-
-/* input[type=checkbox]:checked + label:before {
-    /* background-color: MediumSeaGreen;
-    border-color: MediumSeaGreen; */
-
-/* color: rgb(15, 180, 84);
-    color: black;
-    } */
-
-/* input[type=checkbox]:disabled + label:before {
-    transform: scale(1);
-    border-color: #aaa;
-  }
-  
-  input[type=checkbox]:checked:disabled + label:before {
-    transform: scale(1);
-    background-color: #bfb;
-    border-color: #bfb;
-  } */
+#resultsH, #resultsHBmi{
+    left: 23.2px;
+    position: relative;
+    width: 407px;
+    font-size: 35px;
+}

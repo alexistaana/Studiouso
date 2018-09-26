@@ -5,7 +5,10 @@ const router = express.Router()
 const morgan = require('morgan')
 const passport = require('passport')
 
-const { router: usersRouter } = require('./users')
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+
+const { router: usersRouter, User} = require('./users')
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth')
 // const { router: endpointRouter } = require('./endpoint')
 
@@ -79,6 +82,33 @@ app.get('/authenticated/about', (req, res) => {
 app.get('/authenticated/foodcalc', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/foodcalc.html`)
 })
+
+app.get('/authenticated/taskeditor', (req,res) => {
+  res.sendFile(`${__dirname}/public/authenticated/task.html`)
+})
+
+app.put('/post/bmr', jsonParser, (req, res) => {
+  
+  User.update({
+    id: req.body.id,
+    bmrResults: req.body.bmrResults
+  })
+  .then(function(){
+    res.status(204).end();
+  })
+})
+
+app.put('/post/bmi', jsonParser, (req, res) => {
+  
+  User.update({
+    id: req.body.id,
+    bmiResults: req.body.bmiResults
+  })
+  .then(function(){
+    res.status(204).end();
+  })
+})
+
 
 let server
 
