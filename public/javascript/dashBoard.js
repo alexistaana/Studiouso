@@ -317,12 +317,27 @@ $(document).ready(function () {
 
     function viewScheduleDetail()
     {
-        getUserInfo(function(user){
+      getUserInfo(function(user){
 
             let tempArr = user.schedule
-
             $('#daysOfMonth').on('click', '.hasSchedule', function(e){
+                // console.log('HAI')
+                let numPart = e.target.id;
+                let tempDescription;
+                numPart = numPart.slice(13)
+
+                let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
+                console.log(tempDate)
+
+                for(i = 0; i < user.length; ++i){
+                    if(tempDate == user.schedule[i].date){
+                        tempDescription = user.schedule[i].description;
+                        break;
+                    }
+                }
+
                 
+
             })
         })  
         
@@ -368,6 +383,7 @@ $(document).ready(function () {
         $(populateStats)
         $(generateCalendarSchedule)
         $(checkAndPopulateTask)
+        $(viewScheduleDetail)
     }
 
     $(init)

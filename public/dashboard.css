@@ -1,14 +1,14 @@
 
 
 .logo{
-    /* display: inline-block; */
+    /* displayy: inline-block; */
 
     /* font-family: 'Pacifico', cursive; */
 }
 
 #dashBoardBlock {
     position: absolute;
-    height: 100%;
+    /* height: 100%; */
     /* margin-top: 4%; */
     width: 100%;
     box-sizing: 0px 0px 1px 1px #ccc;
@@ -21,7 +21,7 @@
     text-align: center;
     display: inline-block;
     width: 25%;
-    height: 100%;
+    /* height: 100%; */
     /* padding: 20px; */
     /* border-radius: 10px; */
     color: wheat;
@@ -60,7 +60,7 @@
 #statsBlock {
     background-color: whitesmoke;
     width: 25%;
-    height: 100%;
+    /* height: 100%; */
     margin: 0;
     padding: 0;
     text-align: center;
@@ -84,17 +84,19 @@
 }
 
 #plannerBlock {
-    background-color: rgba(245, 222, 179, 0.541);
+    background-color: rgba(70, 49, 22, 0.5);
+    /* background-color: rgba(108, 90, 90, 0.5);
+    background-color: rgba(245, 222, 179, 0.541); */
+    /* background-color: rgba(108, 90, 90, 0.5); */
     width: 50%;
-    height: 100%;
+    /* height: 100%; */
     margin: 0;
-    padding: 0;
+    padding-bottom: 25px;
 }
 
 #plannerScreen {
-    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     color: blanchedalmond;
 }
 
@@ -201,6 +203,14 @@
 } 
 
 .hasSchedule{
-    color:rgb(0, 230, 0) !important;
-    text-shadow: 0 0 40px rgb(0, 230, 0) !important;
+    transition: .5s;
+    color:rgb(63, 215, 63) !important;
+    text-shadow: 0 0 40px rgb(63, 215, 63)  !important;
+}
+
+.hasSchedule:hover{
+    transition: .5s;
+    color: rgb(1, 253, 1) !important;
+    text-shadow: 0 0 40px rgb(1, 253, 1) !important;
+    cursor: pointer;
 }
