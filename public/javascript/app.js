@@ -4,6 +4,7 @@ $(document).ready(function () {
   const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6'
   const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04'
 
+  //SHOWS LOGIN PART OF SCREEN
   function showLoginSelection() {
     $('#loginScreenSelect').on('click', function (e) {
       e.preventDefault()
@@ -13,6 +14,7 @@ $(document).ready(function () {
     })
   }
 
+  //SHOWS CREATE ACCOUNT PART OF SCREEN
   function showCreateAccSelection() {
     $('#createAccScreenSelect').on('click', function (e) {
       e.preventDefault()
@@ -22,6 +24,7 @@ $(document).ready(function () {
     })
   }
 
+  //API CALL TO CREATE ACCOUNT
   function requestCreateAccount(username, password, email, callback) {
     const query =
     {
@@ -37,14 +40,16 @@ $(document).ready(function () {
       contentType: 'application/json',
       dataType: 'json',
       type: 'POST',
-      success: callback
-      // header: {Authorization: `Bearer $`}
+      success: callback,
+      error: function (e){
+        alert("ERROR! Please try creating an account again or contact the developer if problem persists!");
+      }
     }
 
     $.ajax(settings)
   }
 
-  // REQUESTS SERVER FOR LOGIN
+  // API CALL TO REQUEST SERVER FOR LOGIN
   function requestLoginAccount(username, password, callback) {
     const query = {
       username: `${username}`,
@@ -70,7 +75,6 @@ $(document).ready(function () {
   // SENDS A REQUEST TO THE SERVER TO CHECK IF JWT IS VALID
   function checkAuth(callback, errorCallBack) {
     const auth = localStorage.getItem('authToken')
-    console.log(auth)
 
     const settings =
     {
@@ -81,6 +85,31 @@ $(document).ready(function () {
       error: errorCallBack,
       headers: { Authorization: `Bearer ${auth}` }
     }
+    $.ajax(settings)
+  }
+
+  //API CALL TO REFRESH JWT 
+  function refreshToken(){
+    const auth = localStorage.getItem('authToken')
+
+    const settings =
+    {
+      url: '/api/auth/refresh',
+      contentType: 'application/json',
+      dataType: 'json',
+      type: 'POST',
+      success: function(e){
+        localStorage.setItem('authToken', e.authToken)
+        console.log(e);
+        console.log('STORED')
+      },
+      error: function (e){
+        console.log(e)
+        console.log('ERROR')
+      },
+      headers: {Authorization: `Bearer ${auth}`}
+    }
+
     $.ajax(settings)
   }
 
@@ -96,13 +125,17 @@ $(document).ready(function () {
         window.location.href = '/authenticated/contact'
       }
       else if (redirectTo == 'dash') {
+        refreshToken()
         window.location.href = '/authenticated/dashboard'
       }
       else if (redirectTo == 'foodCalc') {
         window.location.href = '/authenticated/foodcalc'
       } else if (redirectTo == 'taskEditor') {
-        console.log('hai')
+        refreshToken()
         window.location.href = '/authenticated/taskeditor'
+      }
+      else if(redirectTo == 'scheduleEditor'){
+        window.location.href = '/authenticated/schedule'
       }
       else {
         console.log('ERROR!!!');
@@ -113,10 +146,9 @@ $(document).ready(function () {
     })
   }
 
+ 
+  //CHECKS WHAT BTN USER CLICKED
   function watchNavAuthBtns() {
-
-    // let ifClicked = false
-
     $('#logoBtn').click(event => {
       localStorage.setItem("btnClick", "dash")
       checkAuthCall()
@@ -144,6 +176,11 @@ $(document).ready(function () {
 
     $('#contactBtn').click(event => {
       localStorage.setItem('btnClick', 'contact')
+      checkAuthCall()
+    })
+
+    $('#scheduleBtn').click(event =>{
+      localStorage.setItem('btnClick', 'scheduleEditor')
       checkAuthCall()
     })
 
@@ -178,6 +215,7 @@ $(document).ready(function () {
     })
   }
 
+  //WATCHES LOGIN SUBMIT FORM
   function watchLoginSubmit() {
     $('#login-form').submit(event => {
       event.preventDefault()
@@ -199,6 +237,7 @@ $(document).ready(function () {
     })
   }
 
+  //INITIALIZATIONS
   function init() {
     $(showLoginSelection)
     $(showCreateAccSelection)
@@ -208,12 +247,4 @@ $(document).ready(function () {
   }
 
   $(init)
-
-  //   $.ajax({
-  //     url: "http://localhost:8080/",
-  //     type: 'GET',
-  //     // Fetch the stored token from localStorage and set in the header
-  //     headers: {"Authorization": localStorage.getItem('token')}
-  //   })
-
 })

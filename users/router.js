@@ -9,8 +9,6 @@ const jsonParser = bodyParser.json();
 //POST REQUEST
 router.post('/', jsonParser, (req, res) => {
     const requiredFields = ['username', 'password', 'email'];
-    console.log(req.username);
-
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -89,10 +87,11 @@ router.post('/', jsonParser, (req, res) => {
     // Username and password come in pre-trimmed, otherwise we throw an error
     // before this
 
+    console.log("BEFORE USER FIND")
     return User.find({ username })
-        .count()
-        .then(count => {
-            if (count > 0) {
+        .countDocuments()
+        .then(countDocuments => {
+            if (countDocuments > 0) {
                 // There is an existing user with the same username
                 return Promise.reject({
                     code: 422,
@@ -106,20 +105,14 @@ router.post('/', jsonParser, (req, res) => {
         })
         .then(hash => {
 
-            let description = [];
-            let date = [];
-            let title = [];
+            let bmiResults = 0;
+            let bmrResults = 0;
+            let tasks = [];
+            let schedule = [];
+            let scheduleCounter = 0;
+            let taskCounter = 0;
 
-            let bmiResults = "0";
-            let bmrResults = "0";
-            let tasks = {
-                description,
-                date
-            }
-            let schedule ={
-                title,
-                date
-            }
+            // console.log("SERIALIZING")
 
             return User.create({
                 username,
@@ -130,8 +123,11 @@ router.post('/', jsonParser, (req, res) => {
                 tasks,
                 schedule
             });
+
         })
         .then(user => {
+            console.log("SERIALIZING")
+
             return res.status(201).json(user.serialize());
         })
         .catch(err => {
@@ -140,16 +136,27 @@ router.post('/', jsonParser, (req, res) => {
             if (err.reason === 'ValidationError') {
                 return res.status(err.code).json(err);
             }
+            console.error(err);
             res.status(500).json({ code: 500, message: 'Internal server error' });
         });
 });
 
+//GETS THE INFORMATION OF USER
 router.get('/', (req, res) => {
-    return User.find()
-      .then(users => res.json(users.map(user => user.serialize())))
-      .catch(err => res.status(500).json({message: 'Internal server error'}));
-  });
-  
 
-module.exports = {router};
+    User.findById(req.query.id).then(user => res.json(user))
+        .catch(err => res.status(500).json({ message: 'Internal server error' }));
+
+    // return User.find()
+    //   .then(users => res.json(users.map(user => user.serialize())))
+    //   .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+router.get('/get', (req,res) => {
+    return User.find()
+    .then(users => res.json(users.map(user => user.serialize())))
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
+})
+
+module.exports = { router };
 

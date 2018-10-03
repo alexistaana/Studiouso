@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" media="screen"
             href="../media.css">
         <link rel="stylesheet" type="text/css" media="screen"
-            href="../authenticated/css/task.css">
+            href="../authenticated/css/schedule.css">
         <link rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
@@ -23,14 +23,14 @@
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
             crossorigin="anonymous">
 
-        <title>Health Calculators</title>
+        <title>Schedule Editor</title>
 
     </head>
 
     <body>
         <main>
             <div id="bckground">
-                <div id="taskBac">
+                <div id="scheduleBac">
                     <div class="wrap">
                         <!-- MENU BAR -->
                         <nav id="navBar">
@@ -53,11 +53,11 @@
                             </ul>
                         </nav>
                     </div>
-                    <section id="taskBlock">
-                        <div id="taskScreen">
-                            <div id="taskContent">
+                    <section id="scheduleBlock">
+                        <div id="scheduleScreen">
+                            <div id="scheduleContent">
                                 <div id="monthDiv">
-                                    <h1 style="font-size: 35px;">Task Editor</h1>
+                                    <h1 style="font-size: 35px;">schedule Editor</h1>
                                     <ul id="monthUl">
                                         <li id="prevBtn" class="monthTab">&#10094;</li>
                                         <li id="calendarMonth" class="monthTab">
@@ -79,27 +79,27 @@
                                 <ul id="daysOfMonth">
                                 </ul>
 
-                                <form action="#" id="task-form" style="display:
+                                <form action="#" id="schedule-form"
+                                    style="display:
                                     none; display: absolute;">
                                     <div>
                                         <button type="reset" class="fas
-                                            fa-times" id="cancelTask"></button>
+                                            fa-times" id="cancelSchedule"></button>
                                     </div>
 
                                     <div class="input-form">
                                         <textarea type="text"
-                                            maxlength="100"
-                                            placeholder="Enter Task (MAX 100
-                                            CHARACTERS)"
-                                            id="message-form-task"
-                                            aria-labelledby="task of user"
+                                            placeholder="Enter schedule"
+                                            id="message-form-schedule"
+                                            aria-labelledby="schedule of user"
                                             rows="5" required></textarea>
                                     </div>
-                                    <input class="submit-btn" type="submit"
-                                        id="taskSubBtn"
+                                    <input class="submit-btn" type="submit" id="schedSubBtn"
                                         value="SUBMIT" style="color: white;">
                                     <h1 style="display: none;" id="postMsg">POSTED!</h1>
                                 </form>
+
+
                             </div>
                         </div>
                     </section>
@@ -110,5 +110,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="../javascript/app.js"></script>
         <script type="text/javascript"
-            src="../javascript/task.js"></script>
+            src="../javascript/schedule.js"></script>
     </html>

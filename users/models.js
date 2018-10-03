@@ -1,6 +1,23 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
+const taskSchema = new mongoose.Schema({
+    description: String,
+    date: String,
+    created: {type: Date, default:Date.now}
+})
+
+const scheduleSchema = new mongoose.Schema({
+    description: String,
+    date: String,
+    created: {type: Date, default:Date.now}
+})
+
+// const counterSchema = new mongoose.Schema({
+//     made: Number,
+//     finished: Number
+// })
+
 const UserSchema = mongoose.Schema({
     username: {
         type: String,
@@ -24,30 +41,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    tasks:{
-        type: Object,
-        required: false,
-        description:{
-            type: Array,
-            required: false
-        },
-        date:{
-            type: Array,
-            required: false
-        }
-    },
-    schedule:{
-        type: Object,
-        required: false,
-        title:{
-            type: Array,
-            required: false
-        },
-        date:{
-            type: Array,
-            required: false
-        }
-    }
+    tasks:[taskSchema],
+    schedule:[scheduleSchema]
 });
 
 UserSchema.methods.serialize = function () {
@@ -56,7 +51,9 @@ UserSchema.methods.serialize = function () {
         email: this.email || '',
         id: this._id || '',
         bmrResults: this.bmrResults || '',
-        bmiResults: this.bmiResults || ''
+        bmiResults: this.bmiResults || '',
+        tasks: this.tasks || '',
+        schedule: this.schedule || ''
     };
 };
 

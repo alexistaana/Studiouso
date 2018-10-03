@@ -1,5 +1,5 @@
-#taskBac {
-    background-image: url('../../img/img3.jpg');
+#scheduleBac {
+    background-image: url('../../img/img4.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -9,13 +9,13 @@
     bottom: 0;
 }
 
-#taskBlock {
+#scheduleBlock {
     text-align: center;
     margin-top: 4%;
     box-sizing: 0px 0px 1px 1px #ccc;
 }
 
-#taskScreen {
+#scheduleScreen {
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     display: inline-block;
@@ -27,8 +27,6 @@
 }
 
 #calendarMonth {
-    /* margin: 15px; */
-    /* border-bottom: solid wheat; */
     padding-bottom: 25px;
     display: inline-block;
 }
@@ -66,7 +64,7 @@
 }
 
 
-#daysOfMonth li:hover, #nextBtn:hover, #prevBtn:hover, #cancelTask:hover{
+#daysOfMonth li:hover, #nextBtn:hover, #prevBtn:hover, #cancelSchedule:hover{
     transition: .5s;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
@@ -87,15 +85,12 @@
 } */
 
 .monthTab{
-    /* display: inline-block; */
-
     font-size: 35px;
 } 
 
 ul {list-style-type: none;}
 
 #monthDiv{
-    /* font-size: 20px; */
     text-transform: uppercase;
     letter-spacing: 3px;
     width: 100%;
@@ -114,7 +109,7 @@ ul {list-style-type: none;}
     letter-spacing: 3px;
 }
 
-#task-form{
+#schedule-form{
     position: absolute;
     width: 30%;
     height: 50%;
@@ -123,7 +118,7 @@ ul {list-style-type: none;}
     background: #251b1f;
 }
 
-#message-form-task{
+#message-form-schedule{
     background: transparent;
     outline: none;
     width: 400px;
@@ -135,7 +130,7 @@ ul {list-style-type: none;}
     color: white;
 }
 
-#cancelTask{
+#cancelSchedule{
     margin-top: 10px;
     padding-top: 10px;
     margin-right: 10px;
@@ -146,21 +141,4 @@ ul {list-style-type: none;}
     background: transparent;
     border: 0;
     color: wheat;
-}
-
-/* #contact-form .input-form textarea:focus~label {
-    top: -20px;
-    color: rgb(15, 180, 84);
-    font-size: 25px;
-} */
-
-#postMsg{
-    text-align: center;
-    padding: 40px;
-    font-size: 30px;
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: .5s;
 }

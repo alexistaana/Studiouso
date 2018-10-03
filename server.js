@@ -8,7 +8,7 @@ const passport = require('passport')
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 
-const { router: usersRouter, User} = require('./users')
+const { router: usersRouter, User } = require('./users')
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth')
 // const { router: endpointRouter } = require('./endpoint')
 
@@ -40,13 +40,9 @@ app.use('/api/auth/', authRouter)
 // app.use('/app/', endpointRouter)
 
 const jwtAuth = passport.authenticate('jwt', { session: false })
-
-// app.get('/auth', jwtAuth, (req, res) =>{
-//   //CREATES NEW AUTH TOKEN
-// })
+let sizeTask = 0;
 
 app.get('/checkAuth', jwtAuth, (req, res) => {
-  // res.redirect('/dashboard')
   // CHECKS JWT TOKEN
   res.send('Success!!')
 })
@@ -83,36 +79,80 @@ app.get('/authenticated/foodcalc', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/foodcalc.html`)
 })
 
-app.get('/authenticated/taskeditor', (req,res) => {
+app.get('/authenticated/taskeditor', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/task.html`)
 })
 
+app.get('/authenticated/schedule', (req, res) => {
+  res.sendFile(`${__dirname}/public/authenticated/schedule.html`)
+})
+
+
 app.put('/post/bmr', jsonParser, (req, res) => {
-  
-  User.update({
-    id: req.body.id,
-    bmrResults: req.body.bmrResults
+
+  User.findByIdAndUpdate(req.body.id, {bmrResults:req.body.bmrResults})
+  .then(user => {
+    res.status(200).json(user);
   })
-  .then(function(){
-    res.status(204).end();
+  .catch(err => {
+    console.log(err);
+    res.status(400).end()
   })
+
 })
 
 app.put('/post/bmi', jsonParser, (req, res) => {
-  
-  User.update({
-    id: req.body.id,
-    bmiResults: req.body.bmiResults
+
+  User.findByIdAndUpdate(req.body.id, {bmiResults:req.body.bmiResults})
+  .then(user => {
+    res.status(200).json(user);
   })
-  .then(function(){
-    res.status(204).end();
+  .catch(err => {
+    console.log(err);
+    res.status(400).end()
   })
+
 })
 
+app.put('/post/task', jsonParser, (req, res) => {
+
+  User.findByIdAndUpdate(req.body.id,
+    { $push: { "tasks": { description: req.body.description, 
+                          date: req.body.date } } })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+
+      res.status(400).end();
+    })
+})
+
+app.put('/post/schedule', jsonParser, (req, res) => {
+
+  User.findByIdAndUpdate(req.body.id,
+    { $push: { "schedule": { description: req.body.description, 
+                          date: req.body.date } } })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).end();
+    })
+})
+
+app.get('/test', (req, res) => {
+  // res.json(User.get());
+
+  res.json(User.username)
+  console.log(User.username)
+})
 
 let server
 
-function runServer () {
+function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, err => {
       if (err) {
@@ -131,7 +171,7 @@ function runServer () {
   })
 }
 
-function closeServer () {
+function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
       console.log('Closing server')
@@ -149,4 +189,4 @@ if (require.main === module) {
   runServer().catch(err => console.error(err))
 }
 
-module.exports = { app, runServer, closeServer}
+module.exports = { app, runServer, closeServer }

@@ -58,17 +58,19 @@
                                 <!-- <div id="" style>
                                     <a href="" class="navSelection">Menu</a>
                                 </div> -->
-                                <li>
-                                    <a href="" class="navSelection">Schedule Editor</a>
+                                <li id="scheduleBtn">
+                                    <a class="navSelection">Schedule
+                                        Editor</a>
                                 </li>
                                 <li id="taskBtn">
-                                    <a href="" class="navSelection">Task Editor</a>
+                                    <a class="navSelection">Task Editor</a>
                                 </li>
                                 <li id="healthBtn">
                                     <a class="navSelection">Health Calculators</a>
                                 </li>
                                 <li>
-                                    <a class="navSelection">Study Room</a>
+                                    <a class="navSelection" id="testBtn">Study
+                                        Room</a>
                                 </li>
                             </ul>
                         </nav>
@@ -81,11 +83,10 @@
                                     <i class="fas fa-percentage"></i>
                                 </h1>
 
-                                <div>
-                                    <p id="statsOverview">
+                                <div id="statsOverview">
+                                    <!-- <p id="statsOverview">
                                         Currently no stats available!
-                                    </p>
-
+                                    </p> -->
                                 </div>
                             </div>
                         </section>
@@ -96,22 +97,47 @@
 
                                 <div id="dailyTask">
                                     <h1 id="todayHead">Today's Task</h1>
-                                    <h2 id="todayNo">You have no tasks today!
-                                        You are free to do whatever you want!</h2>
-                                    <div id="todayMsgDiv">
+                                    <h2 id="todayNo"></h2>
+                                    <!-- <div id="todayMsgDiv">
                                         <h2 id="todayTitle"></h2>
                                         <h3 id="todayMsg"></h3>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div id="upcomingTasks">
-                                    <h1 id="upcomingHead">You currently have no
+                                    <div id="monthDiv">
+                                        <h1 style="font-size: 35px;">Schedule
+                                            </h1>
+                                        <ul id="monthUl">
+                                            <li id="prevBtn" class="monthTab">&#10094;</li>
+                                            <li id="calendarMonth"
+                                                class="monthTab">
+                                            </li>
+                                            <li id="nextBtn" class="monthTab">&#10095;</li>
+                                        </ul>
+                                    </div>
+
+                                    <ul id="daysInCalendar">
+                                        <li>Sunday</li>
+                                        <li>Monday</li>
+                                        <li>Tuesday</li>
+                                        <li>Wednesday</li>
+                                        <li>Thursday</li>
+                                        <li>Friday</li>
+                                        <li>Saturday</li>
+                                    </ul>
+
+                                    <ul id="daysOfMonth">
+                                    </ul>
+
+                                    <!-- <h1 id="upcomingHead">You currently have no
                                         upcoming tasks. Why don't you add some
                                         up?</h1>
                                     <div id="todayMsgDiv">
                                         <h2 id="todayTitle"></h2>
                                         <h3 id="todayMsg"></h3>
-                                    </div>
+                                    </div> -->
+                                    <!-- <h1>Schedule</h1> -->
                                 </div>
 
                             </div>

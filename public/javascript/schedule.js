@@ -1,10 +1,11 @@
 $(document).ready(function () {
+
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    let monthCounter;
-    let yearCounter;
+    let monthCounter
+    let yearCounter
 
     Date.prototype.getMonthName = function () {
         return months[this.getMonth()];
@@ -50,7 +51,7 @@ $(document).ready(function () {
                 blocksDay = '';
 
                 // if (monthCounter != 0) {
-                    monthCounter--;
+                monthCounter--;
                 // }
 
                 let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
@@ -67,7 +68,7 @@ $(document).ready(function () {
                 for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
                     blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                 }
-                
+
                 console.log(monthCounter - 1)
 
                 $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
@@ -79,7 +80,7 @@ $(document).ready(function () {
 
                 monthCounter = 12
                 yearCounter--;
-                
+
                 let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
 
                 for (let i = 0; i < firstDayMonth.getDay(); i++) {
@@ -147,6 +148,71 @@ $(document).ready(function () {
         })
     }
 
+    function watchDateBtn() {
+        getUserInfo(function (user) {
+            $('#daysOfMonth').on('click', '.filledDay', function (e) {
+                let checkIf = false;
+                let numPart = e.target.id;
+                numPart = numPart.slice(13)
+                let todayDate = new Date();
+                let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
+                localStorage.setItem('dateOfBtn', tempDate);
+
+                tempDate = ``
+
+                let tempArr = user.tasks
+
+                console.log(localStorage.getItem('dateOfBtn'))
+
+                for (let i = 0; i < tempArr.length; ++i) {
+                    if (tempArr[i].date == localStorage.getItem('dateOfBtn')) {
+                        checkIf = true;
+                        break;
+                    }
+                }
+                if (!checkIf) {
+                    $('#schedule-form').show(500, function (e) {
+                        $('#schedule-form').css({ 'position': 'absolute' })
+                    });
+                }
+                else if (checkIf) {
+                    alert("SELECTED DAY ALREADY HAS A SCHEDULE, PLEASE CHOOSE ANOTHER DATE")
+                }
+
+                // $('#schedule-form').show(500, function (e) {
+                //     $('#schedule-form').css({ 'position': 'absolute' })
+                // });
+            });
+        })
+
+
+        //CLOSES schedule BTN  
+        $('#cancelSchedule').click(function (e) {
+            $('#schedule-form').hide(500, function (e) {
+                $('#schedSubBtn').show();
+                $('#postMsg').hide()
+            });
+        })
+    }
+
+    function watchSubmitSchedule() {
+        $('#schedule-form').submit(event => {
+            console.log("CLICKED!")
+            event.preventDefault();
+            const targetOne = $(event.currentTarget).find('#message-form-schedule')
+
+            const scheduleMsg = targetOne.val()
+
+            targetOne.val('')
+
+            postScheduleRequest(scheduleMsg, function (e) {
+                $('#schedSubBtn').fadeOut(500, function (event) {
+                    $('#postMsg').fadeIn(500)
+                })
+            })
+        })
+    }
+
     function getUserInfo(callback) {
         let jwt = localStorage.getItem('authToken')
         var tokens = jwt.split('.')
@@ -171,82 +237,14 @@ $(document).ready(function () {
         $.ajax(settings)
     }
 
-
-
-    function watchDateBtn() {
-        getUserInfo(function (user) {
-            $('#daysOfMonth').on('click', '.filledDay', function (e) {
-                let checkIf = false;
-                let numPart = e.target.id;
-                numPart = numPart.slice(13)
-                let todayDate = new Date();
-                let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
-                localStorage.setItem('dateOfBtn', tempDate);
-
-                tempDate = ``
-
-                let tempArr = user.tasks
-
-                console.log(localStorage.getItem('dateOfBtn'))
-
-                for (let i = 0; i < tempArr.length; ++i) {
-                    if (tempArr[i].date == localStorage.getItem('dateOfBtn')) {
-                        checkIf = true;
-                        break;
-                    }
-                }
-
-                if (!checkIf) {
-                    $('#task-form').show(500, function (e) {
-                        $('#task-form').css({ 'position': 'absolute' })
-                    });
-                }
-                else if (checkIf) {
-                    alert("SELECTED DAY ALREADY HAS A TASK, PLEASE CHOOSE ANOTHER DATE")
-                }
-
-            });
-        })
-
-
-        //CLOSES TASK BTN  
-        $('#cancelTask').click(function (e) {
-            $('#task-form').hide(500, function (e) {
-                $('#taskSubBtn').show();
-                $('#postMsg').hide()
-            });
-        })
-    }
-
-    //WATCHES SUBMIT BTN
-    function watchSubmitTask() {
-        $('#task-form').submit(event => {
-            console.log("CLICKED!")
-            event.preventDefault();
-            const targetOne = $(event.currentTarget).find('#message-form-task')
-
-            const taskMsg = targetOne.val()
-
-            targetOne.val('')
-
-            postTaskRequest(taskMsg, function (event) {
-                // event.preventDefault();
-                $('#taskSubBtn').fadeOut(500, function (event) {
-                    $('#postMsg').fadeIn(500)
-                })
-            })
-        })
-    }
-
-    //API REQUEST TO POST TASKS
-    function postTaskRequest(tasks, callback) {
+    function postScheduleRequest(schedule, callback) {
         let jwt = localStorage.getItem('authToken')
         var tokens = jwt.split('.')
 
         const query =
         {
             id: JSON.parse(atob(tokens[1])).user.id,
-            description: tasks,
+            description: schedule,
             date: localStorage.getItem('dateOfBtn')
         }
 
@@ -254,28 +252,25 @@ $(document).ready(function () {
 
         const settings =
         {
-            url: '/post/task',
+            url: '/post/schedule',
             data: JSON.stringify(query),
             contentType: 'application/json',
             dataType: 'json',
             type: 'PUT',
             success: callback,
             error: function (e) {
-                console.log('ERROR!!!')
+                alert('ERROR! PLEASE TRY AGAIN!');
             }
         }
 
         $.ajax(settings)
     }
 
-    //INITIALIZATION
     function init() {
         $(createCalender);
         $(watchDateBtn);
-        $(watchSubmitTask);
+        $(watchSubmitSchedule);
     }
 
-
-    $(init)
-
+    $(init);
 })
