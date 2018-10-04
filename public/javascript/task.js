@@ -19,131 +19,195 @@ $(document).ready(function () {
     }
 
     function createCalender() {
-        let date = new Date()
-        let monthToday
-        let yearToday
-        let firstDayMonth = new Date(date.getFullYear(), date.getMonth(), 1)
+        getUserInfo(function (user) {
+            let date = new Date()
+            let monthToday
+            let yearToday
+            let firstDayMonth = new Date(date.getFullYear(), date.getMonth(), 1)
 
-        monthCounter = date.getMonth() + 1;
-        yearCounter = date.getFullYear()
+            monthCounter = date.getMonth() + 1;
+            yearCounter = date.getFullYear()
 
-        monthToday = date.getMonthName()
-        yearToday = date.getFullYear()
+            monthToday = date.getMonthName()
+            yearToday = date.getFullYear()
 
-        let blocksDay = ""
-        let dayOfWeek = false
+            let blocksDay = ""
+            let dayOfWeek = false
 
-        for (let i = 0; i < firstDayMonth.getDay(); i++) {
-            blocksDay += `<li style="display: inline-block; height: 24px"></li>`
-        }
+            let tempArr = user.tasks
+            let asnDate
+
+            for (let i = 0; i < firstDayMonth.getDay(); i++) {
+                blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+            }
 
 
-        for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
-            blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
-        }
+            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+            }
 
-        $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
-        $('#daysOfMonth').append(blocksDay)
+            $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
+            $('#daysOfMonth').append(blocksDay)
 
-        $('#prevBtn').click(function (e) {
-            if (monthCounter != 1) {
-                blocksDay = '';
+            //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
+            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
-                // if (monthCounter != 0) {
+                for (let j = 0; j < tempArr.length; ++j) {
+                    if (asnDate == tempArr[j].date) {
+                        $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                    }
+                }
+            }
+
+            $('#prevBtn').click(function (e) {
+                if (monthCounter != 1) {
+                    blocksDay = '';
+
+                    // if (monthCounter != 0) {
                     monthCounter--;
-                // }
+                    // }
 
-                let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
+                    let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
 
-                //BLANK SPACE
-                for (let i = 0; i < firstDayMonth.getDay(); i++) {
-                    blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    //BLANK SPACE
+                    for (let i = 0; i < firstDayMonth.getDay(); i++) {
+                        blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    }
+
+                    monthToday = months[(monthCounter - 1)]
+                    yearToday = yearCounter
+
+                    //FILLED SPACE
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    }
+
+                    console.log(monthCounter - 1)
+
+                    $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
+                    $('#daysOfMonth').html(blocksDay)
+
+                    //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+
+                        for (let j = 0; j < tempArr.length; ++j) {
+                            if (asnDate == tempArr[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                            }
+                        }
+                    }
+
+
+
                 }
+                else {
+                    blocksDay = '';
 
-                monthToday = months[(monthCounter - 1)]
-                yearToday = yearCounter
+                    monthCounter = 12
+                    yearCounter--;
 
-                //FILLED SPACE
-                for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
-                    blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
+
+                    for (let i = 0; i < firstDayMonth.getDay(); i++) {
+                        blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    }
+
+                    monthToday = months[(monthCounter - 1)]
+                    yearToday = yearCounter
+
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, date.getFullYear()); ++i) {
+                        blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    }
+
+                    $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
+                    $('#daysOfMonth').html(blocksDay)
+
+                    //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+
+                        for (let j = 0; j < tempArr.length; ++j) {
+                            if (asnDate == tempArr[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                            }
+                        }
+                    }
+
+
                 }
-                
-                console.log(monthCounter - 1)
+            })
 
-                $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
-                $('#daysOfMonth').html(blocksDay)
+            $('#nextBtn').click(function (e) {
 
-            }
-            else {
-                blocksDay = '';
+                if (monthCounter != 12) {
+                    blocksDay = '';
 
-                monthCounter = 12
-                yearCounter--;
-                
-                let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
+                    monthCounter++;
 
-                for (let i = 0; i < firstDayMonth.getDay(); i++) {
-                    blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
+
+                    for (let i = 0; i < firstDayMonth.getDay(); i++) {
+                        blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    }
+
+                    monthToday = months[(monthCounter - 1)]
+                    yearToday = yearCounter
+
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    }
+
+                    $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
+                    $('#daysOfMonth').html(blocksDay)
+
+                    //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+
+                        for (let j = 0; j < tempArr.length; ++j) {
+                            if (asnDate == tempArr[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                            }
+                        }
+                    }
+
                 }
+                else {
+                    blocksDay = '';
+                    monthCounter = 1;
+                    yearCounter++;
 
-                monthToday = months[(monthCounter - 1)]
-                yearToday = yearCounter
+                    let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
 
-                for (let i = 0; i < daysInMonth(monthCounter - 1, date.getFullYear()); ++i) {
-                    blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    for (let i = 0; i < firstDayMonth.getDay(); i++) {
+                        blocksDay += `<li style="display: inline-block; height: 24px"></li>`
+                    }
+
+                    monthToday = months[(monthCounter - 1)]
+                    yearToday = yearCounter
+
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
+                    }
+
+                    $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
+                    $('#daysOfMonth').html(blocksDay)
+
+                    //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+
+                        for (let j = 0; j < tempArr.length; ++j) {
+                            if (asnDate == tempArr[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                            }
+                        }
+                    }
                 }
+            })
 
-                $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
-                $('#daysOfMonth').html(blocksDay)
-            }
-        })
-
-        $('#nextBtn').click(function (e) {
-
-            if (monthCounter != 12) {
-                blocksDay = '';
-
-                monthCounter++;
-
-                let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
-
-                for (let i = 0; i < firstDayMonth.getDay(); i++) {
-                    blocksDay += `<li style="display: inline-block; height: 24px"></li>`
-                }
-
-                monthToday = months[(monthCounter - 1)]
-                yearToday = yearCounter
-
-                for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
-                    blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
-                }
-
-                $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
-                $('#daysOfMonth').html(blocksDay)
-
-
-            }
-            else {
-                blocksDay = '';
-                monthCounter = 1;
-                yearCounter++;
-
-                let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
-
-                for (let i = 0; i < firstDayMonth.getDay(); i++) {
-                    blocksDay += `<li style="display: inline-block; height: 24px"></li>`
-                }
-
-                monthToday = months[(monthCounter - 1)]
-                yearToday = yearCounter
-
-                for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
-                    blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
-                }
-
-                $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
-                $('#daysOfMonth').html(blocksDay)
-            }
         })
     }
 
@@ -186,8 +250,6 @@ $(document).ready(function () {
                 tempDate = ``
 
                 let tempArr = user.tasks
-
-                console.log(localStorage.getItem('dateOfBtn'))
 
                 for (let i = 0; i < tempArr.length; ++i) {
                     if (tempArr[i].date == localStorage.getItem('dateOfBtn')) {

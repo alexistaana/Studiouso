@@ -5,7 +5,7 @@
     box-sizing: 0px 0px 1px 1px #ccc;
 }
 
-#contactScreen{
+#contactScreen {
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
     display: inline-block;
@@ -16,20 +16,20 @@
     color: wheat;
 }
 
-#contactHead{
+#contactHead {
     font-size: 50px;
-    font-weight: bold;    
+    font-weight: bold;
     padding: 20px;
     margin: 0;
     padding-bottom: 10px;
     text-transform: uppercase;
 }
 
-#contact-form{
+#contact-form {
     padding: 10px;
 }
 
-.contactForms{
+.contactForms {
     background: transparent;
     border-top: rgba(0, 0, 0, 0);
     border-right: rgba(0, 0, 0, 0);
@@ -52,13 +52,17 @@
     text-transform: uppercase;
 }
 
-#contact-form .input-form input:focus~label {
+#contact-form .input-form input:focus~label, #contact-form .input-form input:valid~label,
+#email-form-contact:focus~label,
+#email-form-contact:valid~label {
     top: 0;
     color: rgb(15, 180, 84);
     font-size: 25px;
 }
 
-#message-form-contact{
+
+
+#message-form-contact {
     background: transparent;
     outline: none;
     width: 400px;
@@ -68,8 +72,10 @@
     height: 200px;
 }
 
-#contact-form .input-form textarea:focus~label {
+#contact-form .input-form textarea:focus~label,
+#contact-form .input-form textarea:valid~label {
     top: -20px;
     color: rgb(15, 180, 84);
     font-size: 25px;
 }
+

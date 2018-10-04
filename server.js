@@ -10,7 +10,6 @@ const jsonParser = bodyParser.json()
 
 const { router: usersRouter, User } = require('./users')
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth')
-// const { router: endpointRouter } = require('./endpoint')
 
 mongoose.Promise = global.Promise
 
@@ -37,57 +36,64 @@ passport.use(jwtStrategy)
 
 app.use('/api/users/', usersRouter)
 app.use('/api/auth/', authRouter)
-// app.use('/app/', endpointRouter)
 
 const jwtAuth = passport.authenticate('jwt', { session: false })
-let sizeTask = 0;
 
 app.get('/checkAuth', jwtAuth, (req, res) => {
   // CHECKS JWT TOKEN
-  res.send('Success!!')
 })
 
+//ABOUT PAGE
 app.get('/about', function (req, res) {
   res.sendFile(`${__dirname}/public/about.html`)
 })
 
+//CONTACT PAGE
 app.get('/contact', function (req, res) {
   res.sendFile(`${__dirname}/public/contact.html`)
 })
 
+//LOGIN PAGE PAGE
 app.get('/', function (req, res) {
   res.sendFile('${__dirname}/public/index.html')
 })
 
+//DASHBOARD PAGE
 app.get('/dashboard', function (req, res) {
   res.sendFile(`${__dirname}/public/dashboard.html`)
 })
 
+//DASHBOARD PAGE
 app.get('/authenticated/dashboard', (req, res) => {
   res.sendFile(`${__dirname}/public/dashboard.html`)
 })
 
+//AUTHENTICATED CONTACT PAGE
 app.get('/authenticated/contact', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/contact.html`)
 })
 
+//AUTHENTICATED ABOUT PAGE
 app.get('/authenticated/about', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/about.html`)
 })
 
+//FOOD CALCULATOR PAGE
 app.get('/authenticated/foodcalc', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/foodcalc.html`)
 })
 
+//TASK EDITOR PAGE
 app.get('/authenticated/taskeditor', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/task.html`)
 })
 
+//SCHEDULE EDITOR PAGE
 app.get('/authenticated/schedule', (req, res) => {
   res.sendFile(`${__dirname}/public/authenticated/schedule.html`)
 })
 
-
+//POST REQUEST TO STORE BMR RESULTS
 app.put('/post/bmr', jsonParser, (req, res) => {
 
   User.findByIdAndUpdate(req.body.id, {bmrResults:req.body.bmrResults})
@@ -101,8 +107,8 @@ app.put('/post/bmr', jsonParser, (req, res) => {
 
 })
 
+//POST REQUEST TO STORE BMI RESULTS
 app.put('/post/bmi', jsonParser, (req, res) => {
-
   User.findByIdAndUpdate(req.body.id, {bmiResults:req.body.bmiResults})
   .then(user => {
     res.status(200).json(user);
@@ -111,9 +117,9 @@ app.put('/post/bmi', jsonParser, (req, res) => {
     console.log(err);
     res.status(400).end()
   })
-
 })
 
+//PUT REQUEST TO STORE TASKS
 app.put('/post/task', jsonParser, (req, res) => {
 
   User.findByIdAndUpdate(req.body.id,
@@ -124,11 +130,11 @@ app.put('/post/task', jsonParser, (req, res) => {
     })
     .catch(err => {
       console.log(err);
-
       res.status(400).end();
     })
 })
 
+//POST REQUEST TO STORE TASKS
 app.put('/post/schedule', jsonParser, (req, res) => {
 
   User.findByIdAndUpdate(req.body.id,
@@ -143,15 +149,9 @@ app.put('/post/schedule', jsonParser, (req, res) => {
     })
 })
 
-app.get('/test', (req, res) => {
-  // res.json(User.get());
-
-  res.json(User.username)
-  console.log(User.username)
-})
-
 let server
 
+//RUN SERVER
 function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, err => {
@@ -171,6 +171,7 @@ function runServer() {
   })
 }
 
+//CLOSE SERVER
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {

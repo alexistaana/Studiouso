@@ -1,0 +1,78 @@
+@media only screen and (max-width: 1110px) {
+    .navSelection{
+        font-size: 30px;
+    }
+
+    #scheduleMsgDiv{
+        left: 278px !important;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .navSelection{
+        font-size: 25px !important;
+    }
+
+    #menuHead, #todayHead, .statsHead{
+        font-size: 70px !important;
+    }
+
+    #statsOverview, #todayNo{
+        font-size: 30px !important;
+    }
+
+    #daysOfMonth li, #daysInCalendar li{
+        font-size: 15px !important;
+    }
+
+    #dashBoardBlock{
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .navSelection{
+        font-size: 20px !important;
+    }
+
+    #menuHead, #todayHead, .statsHead{
+        font-size: 55px !important;
+    }
+
+    #statsOverview, #todayNo{
+        font-size: 24px !important;
+    }
+
+    #daysOfMonth li, #daysInCalendar li{
+        font-size: 13px !important;
+    }
+
+    #dashBoardBlock{
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #statsBlock{
+        display: none;
+    }
+
+    #plannerBlock, #dashBoardScreen{
+        width: auto !important;
+    }
+
+    #scheduleMsg{
+        font-size: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #daysInCalendar{
+        display: none;
+    }
+
+    #todayHead{
+        display: none;
+    }
+}
+

@@ -2,11 +2,14 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8" name="description" content="">
+        <meta charset="UTF-8" name="description" content="An all-in-one daily
+            planner that allows the user to track tasks set, schedules planned
+            and current health goals such as the BMR and/or BMI.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/media.css">
+        <link rel="stylesheet" href="/media_css/dashboardMedia.css">
+        <link rel="stylesheet" href="/media_css/indexMedia.css">
         <link rel="stylesheet" href="/dashboard.css">
         <link
             href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
@@ -16,7 +19,7 @@
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
             crossorigin="anonymous">
 
-        <title>Homepage</title>
+        <title>Dashboard</title>
 
     </head>
 
@@ -55,9 +58,6 @@
                             </h1>
 
                             <ul id="dashBar">
-                                <!-- <div id="" style>
-                                    <a href="" class="navSelection">Menu</a>
-                                </div> -->
                                 <li id="scheduleBtn">
                                     <a class="navSelection">Schedule
                                         Editor</a>
@@ -67,10 +67,6 @@
                                 </li>
                                 <li id="healthBtn">
                                     <a class="navSelection">Health Calculators</a>
-                                </li>
-                                <li>
-                                    <a class="navSelection" id="testBtn">Study
-                                        Room</a>
                                 </li>
                             </ul>
                         </nav>
@@ -83,10 +79,7 @@
                                     <i class="fas fa-percentage"></i>
                                 </h1>
 
-                                <div id="statsOverview">
-                                    <!-- <p id="statsOverview">
-                                        Currently no stats available!
-                                    </p> -->
+                                <div id="statsOverview" aria-live="polite">
                                 </div>
                             </div>
                         </section>
@@ -98,16 +91,12 @@
                                 <div id="dailyTask">
                                     <h1 id="todayHead">Today's Task</h1>
                                     <h2 id="todayNo"></h2>
-                                    <!-- <div id="todayMsgDiv">
-                                        <h2 id="todayTitle"></h2>
-                                        <h3 id="todayMsg"></h3>
-                                    </div> -->
                                 </div>
 
                                 <div id="upcomingTasks">
                                     <div id="monthDiv">
                                         <h1 style="font-size: 35px;">Schedule
-                                            </h1>
+                                        </h1>
                                         <ul id="monthUl">
                                             <li id="prevBtn" class="monthTab">&#10094;</li>
                                             <li id="calendarMonth"
@@ -127,8 +116,16 @@
                                         <li>Saturday</li>
                                     </ul>
 
-                                    <ul id="daysOfMonth">
+                                    <ul id="daysOfMonth" aria-live="polite">
                                     </ul>
+                                    <div id="scheduleMsgDiv" style="display:
+                                        none;">
+                                        <div>
+                                            <button type="reset" class="fas
+                                                fa-times" id="closeBtn"></button>
+                                        </div>
+                                        <h2 id="scheduleMsg" aria-live="polite"></h2>
+                                    </div>
                                 </div>
                             </div>
                         </section>

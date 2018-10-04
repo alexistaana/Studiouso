@@ -52,18 +52,21 @@
                                 </header>
 
                                 <div>
-                                    <form action="#" id="contact-form">
+                                    <form method="POST"
+                                        action="https://formspree.io/majsa.dev@gmail.com"
+                                        id="contact-form">
                                         <div class="input-form">
                                             <input type="text"
+                                                name="name"
                                                 class="contactForms"
                                                 id="name-form-contact"
                                                 aria-labelledby="name of sender"
                                                 required>
                                             <label>name</label>
-                                            <!-- <input type="text" id="username-form-login" placeholder=""> -->
                                         </div>
                                         <div class="input-form">
-                                            <input type="email"
+                                            <input type="text"
+                                                name="email"
                                                 class="contactForms"
                                                 id="email-form-contact"
                                                 aria-labelledby="email of
@@ -72,13 +75,14 @@
                                         </div>
                                         <div class="input-form">
                                             <textarea type="text"
+                                                name="message"
                                                 id="message-form-contact"
                                                 aria-labelledby="message of
                                                 sender" rows="4" required></textarea>
                                             <label>message</label>
                                         </div>
                                         <input class="submit-btn" type="submit"
-                                            value="send">
+                                            value="send" id="sendBtn">
                                     </form>
                                 </div>
 

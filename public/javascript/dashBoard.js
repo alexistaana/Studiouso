@@ -123,6 +123,7 @@ $(document).ready(function () {
             $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
             $('#daysOfMonth').append(blocksDay)
 
+
             //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
             for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
                 asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
@@ -315,32 +316,41 @@ $(document).ready(function () {
         })
     }
 
-    function viewScheduleDetail()
-    {
-      getUserInfo(function(user){
+    function viewScheduleDetail() {
+        getUserInfo(function (user) {
 
             let tempArr = user.schedule
-            $('#daysOfMonth').on('click', '.hasSchedule', function(e){
+            $('#daysOfMonth').on('click', '.hasSchedule', function (e) {
                 // console.log('HAI')
                 let numPart = e.target.id;
                 let tempDescription;
+                let ifFound = false;
                 numPart = numPart.slice(13)
 
                 let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
-                console.log(tempDate)
 
-                for(i = 0; i < user.length; ++i){
-                    if(tempDate == user.schedule[i].date){
+                for (i = 0; i < user.schedule.length; ++i) {
+                    if (tempDate == user.schedule[i].date) {
                         tempDescription = user.schedule[i].description;
+                        ifFound = true;
                         break;
                     }
                 }
 
-                
-
+                if (ifFound) {
+                    // let tempMsg = `<h2 id="scheduleMsg">${tempDescription}</h2>`
+                    $('#scheduleMsg').html('')
+                    $('#scheduleMsg').prepend(`<h1>${tempDate}</h1>`)
+                    $('#scheduleMsg').append(tempDescription)
+                    $('#scheduleMsgDiv').show(500)
+                }
             })
-        })  
+        })
         
+        //CLOSES schedule BTN  
+        $('#closeBtn').click(function (e) {
+            $('#scheduleMsgDiv').hide(500)
+        })
     }
 
     //GETS USER INFO
@@ -368,15 +378,6 @@ $(document).ready(function () {
 
         $.ajax(settings)
     }
-
-    $('#testBtn').click(function (e) {
-        console.log('hia')
-        // console.log(JSON.parse(atob(tokens[1])).user.bmiResults)
-        getUserInfo(function (e) {
-            console.log("SUCCESS!")
-        })
-
-    })
 
     // INITIALIZATION
     function init() {

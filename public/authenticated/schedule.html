@@ -11,10 +11,6 @@
             href="../media.css">
         <link rel="stylesheet" type="text/css" media="screen"
             href="../authenticated/css/schedule.css">
-        <link rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-            crossorigin="anonymous">
         <link
             href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
             rel="stylesheet">
@@ -81,7 +77,7 @@
 
                                 <form action="#" id="schedule-form"
                                     style="display:
-                                    none; display: absolute;">
+                                    none;">
                                     <div>
                                         <button type="reset" class="fas
                                             fa-times" id="cancelSchedule"></button>
@@ -89,12 +85,15 @@
 
                                     <div class="input-form">
                                         <textarea type="text"
-                                            placeholder="Enter schedule"
+                                            maxlength="430"
+                                            placeholder="Enter schedule (MAX 430
+                                            CHARACTERS)"
                                             id="message-form-schedule"
                                             aria-labelledby="schedule of user"
                                             rows="5" required></textarea>
                                     </div>
-                                    <input class="submit-btn" type="submit" id="schedSubBtn"
+                                    <input class="submit-btn" type="submit"
+                                        id="schedSubBtn"
                                         value="SUBMIT" style="color: white;">
                                     <h1 style="display: none;" id="postMsg">POSTED!</h1>
                                 </form>

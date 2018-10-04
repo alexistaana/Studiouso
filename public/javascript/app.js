@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  const LOCAL_API_CREATE_URL = '/api/users'
-  const GOOGLE_CLIENT_ID = '89833703730-q99g26m9i2silsvrap9ajdcuv1r7jcao.apps.googleusercontent.com'
-  const GOOGLE_SECRET_ID = 'ZYtVRayhPK0faphjnVCpYyu6'
-  const FAT_API_REST_KEY = '41b943fd6f7f479b913c569598d51c04'
-
   //SHOWS LOGIN PART OF SCREEN
   function showLoginSelection() {
     $('#loginScreenSelect').on('click', function (e) {
@@ -41,7 +36,7 @@ $(document).ready(function () {
       dataType: 'json',
       type: 'POST',
       success: callback,
-      error: function (e){
+      error: function (e) {
         alert("ERROR! Please try creating an account again or contact the developer if problem persists!");
       }
     }
@@ -66,6 +61,9 @@ $(document).ready(function () {
       dataType: 'json',
       type: 'POST',
       success: callback,
+      error: function (e) {
+        alert('LOGIN FAILED! PLEASE TRY AGAIN, IF PROBLEM PERSISTS CONTACT DEVELOPER')
+      },
       header: { Authorization: `Bearer ${auth}` }
     }
 
@@ -85,11 +83,12 @@ $(document).ready(function () {
       error: errorCallBack,
       headers: { Authorization: `Bearer ${auth}` }
     }
+
     $.ajax(settings)
   }
 
   //API CALL TO REFRESH JWT 
-  function refreshToken(){
+  function refreshToken() {
     const auth = localStorage.getItem('authToken')
 
     const settings =
@@ -98,16 +97,10 @@ $(document).ready(function () {
       contentType: 'application/json',
       dataType: 'json',
       type: 'POST',
-      success: function(e){
+      success: function (e) {
         localStorage.setItem('authToken', e.authToken)
-        console.log(e);
-        console.log('STORED')
       },
-      error: function (e){
-        console.log(e)
-        console.log('ERROR')
-      },
-      headers: {Authorization: `Bearer ${auth}`}
+      headers: { Authorization: `Bearer ${auth}` }
     }
 
     $.ajax(settings)
@@ -134,11 +127,12 @@ $(document).ready(function () {
         refreshToken()
         window.location.href = '/authenticated/taskeditor'
       }
-      else if(redirectTo == 'scheduleEditor'){
+      else if (redirectTo == 'scheduleEditor') {
         window.location.href = '/authenticated/schedule'
       }
       else {
         console.log('ERROR!!!');
+        alert("UNEXPECTED ERROR! PLEASE CONTACT DEVELOPER!")
       }
     }, function (response) {
       window.alert('Session expired! Redirecting back to login page...')
@@ -146,46 +140,59 @@ $(document).ready(function () {
     })
   }
 
- 
+
   //CHECKS WHAT BTN USER CLICKED
   function watchNavAuthBtns() {
     $('#logoBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem("btnClick", "dash")
       checkAuthCall()
     })
 
     $('#homeBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'dash')
       checkAuthCall()
     })
 
     $('#aboutBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'about')
       checkAuthCall()
     })
 
     $('#healthBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'foodCalc')
       checkAuthCall()
     })
 
     $('#taskBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'taskEditor')
       checkAuthCall()
     })
 
     $('#contactBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'contact')
       checkAuthCall()
     })
 
-    $('#scheduleBtn').click(event =>{
+    $('#scheduleBtn').click(event => {
+      event.preventDefault();
       localStorage.setItem('btnClick', 'scheduleEditor')
       checkAuthCall()
     })
 
+    $('#noneAuthIcon').click(event => {
+      event.preventDefault();
+      window.location.href = '/'
+    })
+
     // REDIRECTS USER TO LOGIN PAGE AND REMOVES LOCAL STORAGE(JWT)
     $('#signOutBtn').click(event => {
+      event.preventDefault();
       localStorage.removeItem('authToken')
       window.location.href = '/'
     })
@@ -231,8 +238,7 @@ $(document).ready(function () {
 
       requestLoginAccount(queryOne, queryTwo, function (response) {
         localStorage.setItem('authToken', response.authToken)
-        // console.log('success!');
-        window.location.href = '/dashboard'
+        window.location.href = '/authenticated/dashboard'
       })
     })
   }

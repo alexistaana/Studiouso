@@ -1,0 +1,53 @@
+@media only screen and (max-width: 855px) {
+    .contactForms, #message-form-contact {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 845px) {
+    .logForms {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .logo {
+        display: none;
+    }
+    .loginSelection {
+        font-size: 20px;
+    }
+    #contact-form .input-form label {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .loginSelection {
+        font-size: 10px;
+    }
+    #contactScreen {
+        height: auto;
+    }
+    #login-form .input-form label, #create-account-form .input-form label {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #navBar {
+        display: none;
+    }
+    .loginSelection {
+        display: none;
+    }
+    .submit-btn {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    #create-account-btn {
+        font-size: 12px;
+    }
+}
