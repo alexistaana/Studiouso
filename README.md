@@ -36,13 +36,18 @@ LOGIN INFORMATION
 ---
 
 ### NEW ACCOUNT
-##### username: adminNew
-##### password: password
+#### username: adminNew
+#### password: password
 
 ### READY-MADE ACCOUNT
-##### username: admin
-##### password: password
+#### username: admin
+#### password: password
 
 *INSTRUCTIONS*
 ---
-Type in the area of the meetup you like to search on the first search form and then the type of meetup you would like to go to on the second search form. Red markers represent the meetup and green markers represent the food or drink locations. Click on the markers to display more details about it!
+Either create a new account or use the ready made accounts listed above! Demo account should be the ready-made one if you want to just look at a filled up dashboard or if you want to try out the editing of tasks and/or schedules yourself you can login with the new account. Click on the assigned navagation buttons to redirect yourself to the different pages listed.
+
+### *NOTE*
+#### ON THE TASKS/SCHEDULE EDITOR CICK ON THE DAY YOU WANT TO SET A TASK/SCHEDULE ON
+#### GREEN HIGHLIGHTED DATES MEAN THAT IT HAS A SCHEDULE/TASK ALREADY IN IT
+#### CLICK ON THE HIGHLIGHTED DATE TO SHOW THE DESCRIPTION OF IT (ONLY AVAILABLE IN DASHBOARD)
