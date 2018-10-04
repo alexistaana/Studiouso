@@ -1,10 +1,7 @@
 #dashBoardBlock {
     position: absolute;
-    /* height: 100%; */
-    /* margin-top: 4%; */
     width: 100%;
     box-sizing: 0px 0px 1px 1px #ccc;
-    /* background-color: lightslategray; */
     background-color: rgb(104, 84, 84);
     display: inline-flex;
 }
@@ -36,12 +33,6 @@
 
 .navBarSelection {
     padding: 40px;
-}
-
-.shrinkDown {
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 80px;
-    padding-top: 0px;
 }
 
 #statsBlock {
@@ -137,7 +128,6 @@
 }
 
 #daysOfMonth li, #daysInCalendar li {
-    /* display: inline-block; */
     width: 9.5%;
     padding: 2.02%;
     text-align: center;

@@ -1,14 +1,17 @@
 $(document).ready(function (e) {
 
+    //ARRAYS USED FOR MONTH/DAY NAMES
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+    //COUNTERS
     let monthCounter;
     let yearCounter;
 
+    //ARR FOR STORAGE OF SCHEDULES
     let hasScheduleArr;
 
+    //FUNCTIONS TO GET NAMES OF MONTH/DAY
     Date.prototype.getMonthName = function () {
         return months[this.getMonth()];
     };
@@ -16,19 +19,10 @@ $(document).ready(function (e) {
         return days[this.getDay()];
     };
 
+    //RETURNS THE # OF DAYS IN MONTH
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
     }
-
-
-    $(window).scroll(function () {
-        if ($(document).scrollTop() > 20) {
-            $('navBar').addClass('shrinkDown');
-        }
-        else {
-            $('#navBar').removeClass('shrinkDown');
-        }
-    })
 
     //POPULATES STATISTICS AREA
     function populateStats() {
@@ -308,6 +302,7 @@ $(document).ready(function (e) {
         })
     }
 
+    //FUNCTION TO VIEW SCHEDULE
     function viewScheduleDetail() {
         getUserInfo(function (user) {
 
@@ -336,7 +331,7 @@ $(document).ready(function (e) {
                 }
             })
         })
-        
+
         //CLOSES schedule BTN  
         $('#closeBtn').click(function (e) {
             $('#scheduleMsgDiv').hide(500)
@@ -362,7 +357,7 @@ $(document).ready(function (e) {
             type: 'GET',
             success: callback,
             error: function (e) {
-                console.log('ERROR!! AT GET REQUEST')
+                window.alert('FAILED TO GET USER INFO! UNEXPECTED ERROR, PLEASE CONTACT DEVELOPER')
             }
         }
 

@@ -47,12 +47,9 @@ body {
     margin: 30px;
     font-size: 30px;
     transition: .5s;
-    /* border: solid wheat; */
-    /* opacity: 1; */
 }
 
 .foodSelection:hover {
-    /* font-size: 40px; */
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
     cursor: pointer;
@@ -67,22 +64,16 @@ body {
     margin-top: 0px;
 }
 
-.selectText:hover, #weightBmrArrow:hover, #heightBmrArrow:hover, #gendBmrArrow:hover, #submitBackArrow:hover, 
-#heightBmiArrow:hover, #weightBmiArrow:hover{
+.selectText:hover, #weightBmrArrow:hover, #heightBmrArrow:hover, #gendBmrArrow:hover, #submitBackArrow:hover, #heightBmiArrow:hover, #weightBmiArrow:hover {
     transition: .5s;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
     cursor: pointer;
 }
 
-/* #weightBmrArrow, #heightBmrArrow{
-    
-} */
-
 .inputStyle {
     margin-left: 40px;
     display: inline-flex;
-    /* display: none; */
 }
 
 .foodForms {
@@ -101,18 +92,6 @@ body {
     transition: .5s;
     text-transform: uppercase;
 }
-
-/* #height-form-calc input:focus~label, #height-form-calc input:valid~label{
-    top: 0;
-    color: rgb(15, 180, 84);
-    font-size: 25px;
-}
-
-#height-form-calc-in input:focus~label, #height-form-calc-in input:valid~label{
-    top: 0;
-    color: rgb(15, 180, 84);
-    font-size: 25px;
-} */
 
 .foodForms input:focus~label, .foodForms input:valid~label {
     top: 0;
@@ -136,7 +115,7 @@ body {
     display: none;
 }
 
-#storeBmrBtn, #storeBmiBtn{
+#storeBmrBtn, #storeBmiBtn {
     font-size: 30px;
     position: relative;
     top: 7px;
@@ -156,7 +135,7 @@ body {
     left: -5px;
 }
 
-#resultsH, #resultsHBmi{
+#resultsH, #resultsHBmi {
     left: 23.2px;
     position: relative;
     width: 407px;

@@ -505,7 +505,6 @@ $(document).ready(function () {
               })
             })
           })
-
         }
       })
     })

@@ -27,8 +27,6 @@
 }
 
 #calendarMonth {
-    /* margin: 15px; */
-    /* border-bottom: solid wheat; */
     padding-bottom: 25px;
     display: inline-block;
 }
@@ -37,19 +35,7 @@
     padding: 0;
 }
 
-/* #daysInCalendar li{
-    display: inline-block;
-    width: 9.5%;
-    padding: 1.9%;
-    text-align: center;
-    font-size: 20px;
-    border-bottom: solid;
-    border-right: solid;
-    border-width: 1px;
-} */
-
 #daysOfMonth li, #daysInCalendar li {
-    display: inline-block;
     width: 9.5%;
     padding: 2.02%;
     text-align: center;
@@ -82,20 +68,13 @@
     float: right;
 }
 
-/* #monthUl{
-    display: inline;
-} */
-
 .monthTab{
-    /* display: inline-block; */
-
     font-size: 35px;
 } 
 
 ul {list-style-type: none;}
 
 #monthDiv{
-    /* font-size: 20px; */
     text-transform: uppercase;
     letter-spacing: 3px;
     width: 100%;
@@ -127,7 +106,6 @@ ul {list-style-type: none;}
     background: transparent;
     outline: none;
     width: 80%;
-    /* color: wheat; */
     height: 50px;
     font-size: 25px;
     height: 200px;
@@ -147,12 +125,6 @@ ul {list-style-type: none;}
     border: 0;
     color: wheat;
 }
-
-/* #contact-form .input-form textarea:focus~label {
-    top: -20px;
-    color: rgb(15, 180, 84);
-    font-size: 25px;
-} */
 
 #postMsg{
     text-align: center;

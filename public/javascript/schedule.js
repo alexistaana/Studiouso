@@ -1,12 +1,14 @@
 $(document).ready(function () {
 
+    //ARRAYS USED FOR MONTH/DAY NAMES
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    let monthCounter
-    let yearCounter
+    //COUNTERS
+    let monthCounter;
+    let yearCounter;
 
+    //FUNCTIONS TO GET NAMES OF MONTH/DAY
     Date.prototype.getMonthName = function () {
         return months[this.getMonth()];
     };
@@ -14,11 +16,12 @@ $(document).ready(function () {
         return days[this.getDay()];
     };
 
-    //GETS THE NUMBER OF DAYS IN A MONTH
+    //RETURNS THE # OF DAYS IN MONTH
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
     }
 
+    //FUNCTION TO CREATE CALENDAR
     function createCalender() {
         getUserInfo(function (user) {
             let date = new Date()
@@ -67,9 +70,7 @@ $(document).ready(function () {
                 if (monthCounter != 1) {
                     blocksDay = '';
 
-                    // if (monthCounter != 0) {
                     monthCounter--;
-                    // }
 
                     let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
 
@@ -85,8 +86,6 @@ $(document).ready(function () {
                     for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
-
-                    console.log(monthCounter - 1)
 
                     $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
                     $('#daysOfMonth').html(blocksDay)
@@ -212,6 +211,7 @@ $(document).ready(function () {
 
     }
 
+    //WATCHES DATE BUTTONS
     function watchDateBtn() {
         getUserInfo(function (user) {
             $('#daysOfMonth').on('click', '.filledDay', function (e) {
@@ -255,7 +255,6 @@ $(document).ready(function () {
     //WATCHES SUBMIT SCHEDULE BTN
     function watchSubmitSchedule() {
         $('#schedule-form').submit(event => {
-            console.log("CLICKED!")
             event.preventDefault();
             const targetOne = $(event.currentTarget).find('#message-form-schedule')
 
@@ -290,7 +289,7 @@ $(document).ready(function () {
             type: 'GET',
             success: callback,
             error: function (e) {
-                console.log('ERROR!!AT GET REQUEST')
+                window.alert('FAILED TO GET USER INFO! UNEXPECTED ERROR, PLEASE CONTACT DEVELOPER')
             }
         }
         $.ajax(settings)
@@ -319,7 +318,7 @@ $(document).ready(function () {
             type: 'PUT',
             success: callback,
             error: function (e) {
-                alert('ERROR! PLEASE TRY AGAIN!');
+                window.alert('FAILED TO STORE SCHEDULE! PLEASE TRY AGAIN OR CONTACT DEVELOPER IF PROBLEM PERSISTS!')
             }
         }
 

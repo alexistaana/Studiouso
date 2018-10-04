@@ -4,9 +4,6 @@ const mongoose = require('mongoose');
 
 const { app, runServer, closeServer } = require('../server');
 
-// this lets us use *expect* style syntax in our tests
-// so we can do things like `expect(1 + 1).to.equal(2);`
-// http://chaijs.com/api/bdd/
 const expect = chai.expect;
 
 const { User } = require('../users/models');

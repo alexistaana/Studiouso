@@ -35,19 +35,7 @@
     padding: 0;
 }
 
-/* #daysInCalendar li{
-    display: inline-block;
-    width: 9.5%;
-    padding: 1.9%;
-    text-align: center;
-    font-size: 20px;
-    border-bottom: solid;
-    border-right: solid;
-    border-width: 1px;
-} */
-
 #daysOfMonth li, #daysInCalendar li {
-    display: inline-block;
     width: 9.5%;
     padding: 2.02%;
     text-align: center;
@@ -79,10 +67,6 @@
 #nextBtn{
     float: right;
 }
-
-/* #monthUl{
-    display: inline;
-} */
 
 .monthTab{
     font-size: 35px;

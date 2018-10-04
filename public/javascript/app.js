@@ -80,10 +80,7 @@ $(document).ready(function () {
       type: 'GET',
       contentType: 'application/json',
       success: callback,
-      error: function(e){
-        console.log(e)
-      },
-      // error: errorCallBack,
+      error: errorCallBack,
       headers: { Authorization: `Bearer ${auth}` }
     }
 
@@ -133,7 +130,6 @@ $(document).ready(function () {
         window.location.href = '/authenticated/schedule'
       }
       else {
-        console.log('ERROR!!!');
         window.alert("UNEXPECTED ERROR! PLEASE CONTACT DEVELOPER!")
       }
     }, function (response) {
@@ -148,7 +144,7 @@ $(document).ready(function () {
   function watchNavAuthBtns() {
     $('#logoBtn').click(event => {
       event.preventDefault();
-      localStorage.setItem("btnClick", "dash")
+      localStorage.setItem('btnClick', 'dash')
       window.location.href="/authenticated/dashboard"
       checkAuthCall()
     })
@@ -156,7 +152,6 @@ $(document).ready(function () {
     $('#homeBtn').click(event => {
       event.preventDefault();
       localStorage.setItem('btnClick', 'dash')
-      console.log('WORKING')
       checkAuthCall()
     })
 
