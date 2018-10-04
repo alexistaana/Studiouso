@@ -5,6 +5,8 @@ $(document).ready(function () {
       e.preventDefault()
       $('#create-account-form').fadeOut(500, function (e) {
         $('#login-form').fadeIn(500)
+        $('#bckground').css('height', '100%')
+
       })
     })
   }
@@ -15,6 +17,7 @@ $(document).ready(function () {
       e.preventDefault()
       $('#login-form').fadeOut(500, function (e) {
         $('#create-account-form').fadeIn(500)
+        $('#bckground').css('height', '')
       })
     })
   }
@@ -145,7 +148,7 @@ $(document).ready(function () {
     $('#logoBtn').click(event => {
       event.preventDefault();
       localStorage.setItem('btnClick', 'dash')
-      window.location.href="/authenticated/dashboard"
+      window.location.href = "/authenticated/dashboard"
       checkAuthCall()
     })
 

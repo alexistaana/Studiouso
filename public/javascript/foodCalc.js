@@ -9,6 +9,7 @@ $(document).ready(function () {
 
       $('#bmi-form').fadeOut(500, function (e) {
         $('#bmr-form').fadeIn(500)
+        $('#foodBac').css('height', '');
       })
     })
   }
@@ -18,6 +19,7 @@ $(document).ready(function () {
     $('#bmiScreenSelect').click(e => {
       $('#bmr-form').fadeOut(500, function (e) {
         $('#bmi-form').fadeIn(500)
+        $('#foodBac').css('height', '100%');
       })
     })
   }
