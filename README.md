@@ -8,7 +8,7 @@ https://studiouso.herokuapp.com/
 Description
 ---
 A daily planner app that allows the user to create tasks, schedules, and calculate their basal metabolic rate and 
-body mass index. It is then stored and displayed in their dashboard.
+body mass index. It is then stored and displayed on their dashboard.
 
 Motivation
 ---
