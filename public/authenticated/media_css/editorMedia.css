@@ -1,0 +1,53 @@
+@media only screen and (max-width: 1080px) {
+    #schedule-form, #task-form {
+        left: 351px !important;
+        width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 855px) {
+    .logo {
+        display: none;
+    }
+    #daysInCalendar li {
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    #navBar #list li a {
+        font-size: 20px;
+    }
+    #schedule-form, #task-form {
+        left: 169px !important;
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    #navBar #list li a {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 608px) {
+    
+    #scheduleScreen, #taskScreen {
+        width: auto !important;
+    }
+    #scheduleBlock, #taskBlock {
+        height: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #schedule-form, #task-form {
+        left: 42px !important;
+        width: 84% !important;
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    #daysInCalendar {
+        display: none;
+    }
+}

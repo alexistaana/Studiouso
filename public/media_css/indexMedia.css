@@ -1,3 +1,9 @@
+@media only screen and (max-width: 884px) {
+    .logo {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 855px) {
     .contactForms, #message-form-contact {
         width: 100%;
@@ -11,9 +17,6 @@
 }
 
 @media only screen and (max-width: 740px) {
-    .logo {
-        display: none;
-    }
     .loginSelection {
         font-size: 20px;
     }
@@ -22,9 +25,28 @@
     }
 }
 
+@media only screen and (max-width: 720px) {
+    #navBar #list li a {
+        font-size: 15px;
+    }
+    #aboutScreen {
+        width: auto !important;
+    }
+}
+
+@media only screen and (max-width: 608px) {
+    .authNav {
+        padding: 0 !important;
+        padding-right: 100px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+}
+
 @media only screen and (max-width: 550px) {
-    .loginSelection {
-        font-size: 10px;
+    #loginScreen {
+        width: 100%;
+        font-size: 20px;
     }
     #contactScreen {
         height: auto;
@@ -34,15 +56,24 @@
     }
 }
 
+@media only screen and (max-width: 550px) {
+    .authNav {
+        padding-right: 43px !important;
+    }
+}
+
 @media only screen and (max-width: 450px) {
     #navBar {
         display: none;
     }
-    .loginSelection {
-        display: none;
-    }
     .submit-btn {
         font-size: 15px;
+    }
+    #contactScreen {
+        width: auto !important;
+    }
+    #aboutScreen {
+        height: auto !important;
     }
 }
 

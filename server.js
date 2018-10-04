@@ -41,6 +41,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false })
 
 app.get('/checkAuth', jwtAuth, (req, res) => {
   // CHECKS JWT TOKEN
+  res.status(200).end()
 })
 
 //ABOUT PAGE

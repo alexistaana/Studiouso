@@ -2,13 +2,17 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8" name="description" content="">
+        <meta charset="UTF-8" name="description" content="An all-in-one daily
+            planner that allows the user to track tasks set, schedules planned
+            and current health goals such as the BMR and/or BMI.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" media="screen"
             href="../main.css" />
         <link rel="stylesheet" type="text/css" media="screen"
-            href="../media.css">
+            href="../media_css/indexMedia.css">
+        <link rel="stylesheet" type="text/css" media="screen"
+            href="../authenticated/media_css/editorMedia.css">
         <link rel="stylesheet" type="text/css" media="screen"
             href="../authenticated/css/task.css">
         <link rel="stylesheet"
@@ -23,7 +27,7 @@
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
             crossorigin="anonymous">
 
-        <title>Health Calculators</title>
+        <title>Task Editor</title>
 
     </head>
 
@@ -33,7 +37,7 @@
                 <div id="taskBac">
                     <div class="wrap">
                         <!-- MENU BAR -->
-                        <nav id="navBar">
+                        <nav id="navBar" class="authNav">
                             <h1 id="logoBtn" class="logo navSelection">
                                 <i class="fas fa-book-reader"> Studiouso</i>
                             </h1>
@@ -60,7 +64,7 @@
                                     <h1 style="font-size: 35px;">Task Editor</h1>
                                     <ul id="monthUl">
                                         <li id="prevBtn" class="monthTab">&#10094;</li>
-                                        <li id="calendarMonth" class="monthTab">
+                                        <li id="calendarMonth" class="monthTab" aria-live="polite">
                                         </li>
                                         <li id="nextBtn" class="monthTab">&#10095;</li>
                                     </ul>
@@ -76,7 +80,7 @@
                                     <li>Saturday</li>
                                 </ul>
 
-                                <ul id="daysOfMonth">
+                                <ul id="daysOfMonth" aria-live="polite">
                                 </ul>
 
                                 <form action="#" id="task-form" style="display:
@@ -86,9 +90,9 @@
                                             fa-times" id="cancelTask"></button>
                                     </div>
 
-                                    <div class="input-form">
+                                    <div class="input-form-editor">
                                         <textarea type="text"
-                                            maxlength="140"
+                                            maxlength="220"
                                             placeholder="Enter Task (MAX 220
                                             CHARACTERS)"
                                             id="message-form-task"

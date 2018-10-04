@@ -29,7 +29,7 @@
                 <div id="tempBac">
                     <div class="wrap">
                         <!-- MENU BAR -->
-                        <nav id="navBar">
+                        <nav id="navBar" class="authNav">
                             <h1 id="logoBtn" class="logo navSelection">
                                 <i class="fas fa-book-reader"> Studiouso</i>
                             </h1>
@@ -78,7 +78,6 @@
                                     Stats
                                     <i class="fas fa-percentage"></i>
                                 </h1>
-
                                 <div id="statsOverview" aria-live="polite">
                                 </div>
                             </div>
@@ -90,7 +89,7 @@
 
                                 <div id="dailyTask">
                                     <h1 id="todayHead">Today's Task</h1>
-                                    <h2 id="todayNo"></h2>
+                                    <h2 id="todayNo" aria-live="polite"></h2>
                                 </div>
 
                                 <div id="upcomingTasks">
@@ -100,7 +99,8 @@
                                         <ul id="monthUl">
                                             <li id="prevBtn" class="monthTab">&#10094;</li>
                                             <li id="calendarMonth"
-                                                class="monthTab">
+                                                class="monthTab"
+                                                aria-live="polite">
                                             </li>
                                             <li id="nextBtn" class="monthTab">&#10095;</li>
                                         </ul>

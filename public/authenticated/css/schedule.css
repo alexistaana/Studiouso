@@ -113,7 +113,7 @@ ul {list-style-type: none;}
     position: absolute;
     width: 30%;
     height: 50%;
-    left: 746px;
+    left: 648px;
     top: 147px;
     background: #251b1f;
 }
@@ -121,8 +121,7 @@ ul {list-style-type: none;}
 #message-form-schedule{
     background: transparent;
     outline: none;
-    width: 400px;
-    /* color: wheat; */
+    width: 80%;
     height: 50px;
     font-size: 25px;
     height: 200px;
@@ -141,4 +140,12 @@ ul {list-style-type: none;}
     background: transparent;
     border: 0;
     color: wheat;
+}
+
+.input-form-editor {
+    margin-top: 45px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    position: relative;
 }

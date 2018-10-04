@@ -1,0 +1,61 @@
+@media only screen and (max-width: 1007px) {
+    .foodForms{
+        width: 50% !important;
+    }
+    
+    #gendBmrArrow{
+        left: 58px;
+    }
+
+    #storeBmrBtn, #storeBmiBtn{
+        right: 204px !important;
+        top: 64px !important;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+
+    #gendBmrArrow{
+        left: 7px !important;
+    }
+
+    #gendSelected{
+        left: -77.8px !important;
+    }
+
+    #resultsH, #resultsHBmi{ 
+        left: -74.8px !important;
+    }
+
+    #storeBmrBtn, #storeBmiBtn{
+        right: 295px !important;
+    }
+}
+
+@media only screen and (max-width: 515px) {
+
+    #foodScreen{
+        width: auto !important;
+    }
+
+    #gendBmrArrow{
+        left: 54px !important;
+    }
+
+    #gendSelected{
+        left: -22.8px !important;
+    }
+
+    #resultsH, #resultsHBmi{ 
+        left: 32.2px !important;
+    }
+    
+    #storeBmrBtn, #storeBmiBtn{
+        right: 206px !important;
+    }   
+
+    #foodScreen{
+        height: auto !important;
+    }
+}
+

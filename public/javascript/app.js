@@ -37,7 +37,7 @@ $(document).ready(function () {
       type: 'POST',
       success: callback,
       error: function (e) {
-        alert("ERROR! Please try creating an account again or contact the developer if problem persists!");
+        window.alert("ERROR! Please try creating an account again or contact the developer if problem persists!");
       }
     }
 
@@ -80,7 +80,10 @@ $(document).ready(function () {
       type: 'GET',
       contentType: 'application/json',
       success: callback,
-      error: errorCallBack,
+      error: function(e){
+        console.log(e)
+      },
+      // error: errorCallBack,
       headers: { Authorization: `Bearer ${auth}` }
     }
 
@@ -124,7 +127,6 @@ $(document).ready(function () {
       else if (redirectTo == 'foodCalc') {
         window.location.href = '/authenticated/foodcalc'
       } else if (redirectTo == 'taskEditor') {
-        refreshToken()
         window.location.href = '/authenticated/taskeditor'
       }
       else if (redirectTo == 'scheduleEditor') {
@@ -132,9 +134,10 @@ $(document).ready(function () {
       }
       else {
         console.log('ERROR!!!');
-        alert("UNEXPECTED ERROR! PLEASE CONTACT DEVELOPER!")
+        window.alert("UNEXPECTED ERROR! PLEASE CONTACT DEVELOPER!")
       }
     }, function (response) {
+      window.alert(response)
       window.alert('Session expired! Redirecting back to login page...')
       window.location.href = '/'
     })
@@ -146,12 +149,14 @@ $(document).ready(function () {
     $('#logoBtn').click(event => {
       event.preventDefault();
       localStorage.setItem("btnClick", "dash")
+      window.location.href="/authenticated/dashboard"
       checkAuthCall()
     })
 
     $('#homeBtn').click(event => {
       event.preventDefault();
       localStorage.setItem('btnClick', 'dash')
+      console.log('WORKING')
       checkAuthCall()
     })
 

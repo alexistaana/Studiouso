@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function (e) {
 
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -127,7 +127,6 @@ $(document).ready(function () {
             //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
             for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
                 asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
-                console.log(asnDate);
 
                 for (let j = 0; j < tempArr.length; ++j) {
                     if (asnDate == tempArr[j].date) {
@@ -164,7 +163,6 @@ $(document).ready(function () {
 
                     for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
-                        console.log(asnDate)
 
                         for (let j = 0; j < tempArr.length; ++j) {
                             if (asnDate == tempArr[j].date) {
@@ -204,8 +202,6 @@ $(document).ready(function () {
                             }
                         }
                     }
-
-
                 }
             })
 
@@ -293,10 +289,6 @@ $(document).ready(function () {
             let temp = `${monthToday + 1}/${dayToday}/${yearToday}`
             let txtMsg;
 
-            console.log(temp)
-
-            console.log(tempArr)
-
             for (let i = 0; i < tempArr.length; ++i) {
                 if (temp == tempArr[i].date) {
                     ifAvailable = true;
@@ -321,7 +313,6 @@ $(document).ready(function () {
 
             let tempArr = user.schedule
             $('#daysOfMonth').on('click', '.hasSchedule', function (e) {
-                // console.log('HAI')
                 let numPart = e.target.id;
                 let tempDescription;
                 let ifFound = false;
@@ -338,7 +329,6 @@ $(document).ready(function () {
                 }
 
                 if (ifFound) {
-                    // let tempMsg = `<h2 id="scheduleMsg">${tempDescription}</h2>`
                     $('#scheduleMsg').html('')
                     $('#scheduleMsg').prepend(`<h1>${tempDate}</h1>`)
                     $('#scheduleMsg').append(tempDescription)
@@ -372,7 +362,7 @@ $(document).ready(function () {
             type: 'GET',
             success: callback,
             error: function (e) {
-                console.log('ERROR!!AT GET REQUEST')
+                console.log('ERROR!! AT GET REQUEST')
             }
         }
 

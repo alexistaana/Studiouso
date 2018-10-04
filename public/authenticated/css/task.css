@@ -118,7 +118,7 @@ ul {list-style-type: none;}
     position: absolute;
     width: 30%;
     height: 50%;
-    left: 746px;
+    left: 648px;
     top: 147px;
     background: #251b1f;
 }
@@ -126,7 +126,7 @@ ul {list-style-type: none;}
 #message-form-task{
     background: transparent;
     outline: none;
-    width: 400px;
+    width: 80%;
     /* color: wheat; */
     height: 50px;
     font-size: 25px;
@@ -163,4 +163,12 @@ ul {list-style-type: none;}
     text-transform: uppercase;
     font-weight: bold;
     transition: .5s;
+}
+
+.input-form-editor {
+    margin-top: 45px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    position: relative;
 }

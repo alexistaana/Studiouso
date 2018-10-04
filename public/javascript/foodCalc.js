@@ -7,9 +7,6 @@ $(document).ready(function () {
   function showBmrSelection() {
     $('#bmrScreenSelect').click(e => {
 
-      // let today = new Date;
-      // console.log(today)
-
       $('#bmi-form').fadeOut(500, function (e) {
         $('#bmr-form').fadeIn(500)
       })
@@ -24,16 +21,6 @@ $(document).ready(function () {
       })
     })
   }
-
-  // function showCalorieSelection () 
-  // {
-  //   $('#calorieScreenSelect').click(e => {
-  //     $('#bmi-form').fadeOut(500)
-  //     $('#bmr-form').fadeOut(500, function(e){
-  //       $('#calorie-form').fadeIn(500)
-  //     })
-  //   })
-  // }
 
   // ON CLICK FUNCTIONS THAT SHOW FORMS WITH THE SELECTED PARAMETER
   function showParameterSelectionBmr() {
@@ -111,13 +98,7 @@ $(document).ready(function () {
               </div>
           </div>`
       $('#checkHeightDiv').fadeOut(500, function (e) {
-        $('#heightBmrBox').fadeIn(500, function (e) {
-          $('#height-form-calc').keyup(console.log('hai'))
-
-          $('#height-form-calc').on('load', function (e) {
-            $('#height-form-calc').keyup(console.log('hai'))
-          })
-        })
+        $('#heightBmrBox').fadeIn(500)
       })
     })
 
@@ -128,7 +109,7 @@ $(document).ready(function () {
         $('#genderBmrBox').fadeIn(500)
         document.getElementById('genderBmrBox').innerHTML =
           `<i id="gendBmrArrow" class="far fa-arrow-alt-circle-left" style="top: 30px;"></i>
-        <h2 style="font-size: 35px; width: 460px; left: -19.8px; position: relative;">Male Selected</h2>`
+        <h2 style="font-size: 35px; width: 460px; left: -19.8px; position: relative;" id="gendSelected">Male Selected</h2>`
         $('#genderBmrBox').css('display', 'inline-flex')
       })
     })
@@ -140,7 +121,7 @@ $(document).ready(function () {
         $('#genderBmrBox').fadeIn(500)
         document.getElementById('genderBmrBox').innerHTML =
           `<i id="gendBmrArrow" class="far fa-arrow-alt-circle-left" style="top: 30px;"></i>
-          <h2 style="font-size: 35px; width: 460px; left: -19.8px; position: relative;">Female Selected</h2>`
+          <h2 style="font-size: 35px; width: 460px; left: -19.8px; position: relative;" id="gendSelected">Female Selected</h2>`
         $('#genderBmrBox').css('display', 'inline-flex')
       })
     })
@@ -256,17 +237,13 @@ $(document).ready(function () {
     })
   }
 
+  //WATCHES BMR SUBMIT BTN
   function watchBmrCalculateSubmit() {
     $('#bmr-form').submit(event => {
       event.preventDefault()
       const targetOne = $(event.currentTarget).find('#weight-form-calc')
       const targetTwo = $(event.currentTarget).find('#height-form-calc')
       const targetThree = $(event.currentTarget).find('#age-form-calc')
-      // if (document.getElementById('height-form-calc-in')) {
-      //   const targetFour = $(event.currentTarget).find('#weight-form-calc-in')
-      // const weightInch = targetFour.val()
-      // localStorage.setItem('tempInch', weightInch)
-      // }
 
       const weightInfo = targetOne.val()
       const heightInfo = targetTwo.val()
@@ -277,18 +254,10 @@ $(document).ready(function () {
       targetTwo.val('')
       targetThree.val('')
 
+      //CALLS CALCULATE BMR
       calculateBmr(weightInfo, heightInfo, ageInfo, genderChoice, function (results) {
         $('#bmr-calculate-btn').fadeOut(500, function (e) {
           $('#bmrResultsBox').fadeIn(500, function (e) {
-
-            // tempHtml = 
-            // `<div style="display: inline-flex;"
-            //   id="bmrDynamic">
-            //   <h1 id="resultsH">Your BMR is
-            //       <b>${results}</b></h1>
-            //   <h2 id="storeBmrBtn">Store?</h2>
-            // </div>`
-            // $('#resultBmrDiv').prepend(tempHtml)
 
             document.getElementById('resultBmrDiv').innerHTML =
               `
@@ -318,19 +287,13 @@ $(document).ready(function () {
     })
   }
 
+  //CALCULATES BASAL METABOLIC RATE
   function calculateBmr(w, h, a, g, callback) {
     let bmrResult
 
     // FORMULA USED ----
     // Women: BMR = 655 + (9.6 x weight in kg) + (1.8 x height in cm) - (4.7 x age in years)
     // Men: BMR = 66 + (13.7 x weight in kg) + (5 x height in cm) - (6.8 x age in years)
-
-
-    console.log(w);
-    console.log(h);
-    console.log(a);
-
-    console.log('hai');
 
     // CHANGES POUNDS TO KILOGRAMS
     if (weightChoice == 'lb') {
@@ -353,6 +316,7 @@ $(document).ready(function () {
     return callback(Math.round(bmrResult))
   }
 
+  //API CALL TO STORE BMR
   function bmrStoreData(results, callback) {
     let jwt = localStorage.getItem('authToken')
     var tokens = jwt.split('.')
@@ -371,7 +335,7 @@ $(document).ready(function () {
       type: 'PUT',
       success: callback,
       error: function (e) {
-        console.log('ERROR!!!')
+        window.alert('ERROR IN STORING BMR! TRY AGAIN OR CONTACT DEVELOPER!')
       }
     }
 
@@ -380,6 +344,7 @@ $(document).ready(function () {
 
   // <-- BMI SECTION -->
 
+  //SHOWS BMI SECTION
   function showParameterSelectionBmi() {
     $('#poundSelectBmi').click(e => {
       weightChoice = 'lb'
@@ -490,6 +455,7 @@ $(document).ready(function () {
 
   }
 
+  //WATCHES BMI SUBMIT BTN
   function watchBmiCalculateSubmit() {
     $('#bmi-form').submit(event => {
       event.preventDefault();
@@ -545,6 +511,7 @@ $(document).ready(function () {
     })
   }
 
+  // API RQUEST CALL TO STORE BMI
   function bmiStoreData(results, callback) {
     let jwt = localStorage.getItem('authToken')
     var tokens = jwt.split('.')
@@ -563,12 +530,13 @@ $(document).ready(function () {
       type: 'PUT',
       success: callback,
       error: function (e) {
-        console.log('ERROR!!!')
+        window.alert('ERROR IN STORING BMI! TRY AGAIN OR CONTACT DEVELOPER!')
       }
     }
     $.ajax(settings)
   }
 
+  //CALCULATES BMI
   function calculateBmi(w, h, callback) {
     // FORMULA USED ----
     // BMI = kg / m^2 
@@ -595,6 +563,7 @@ $(document).ready(function () {
     return callback(bmiResult.toFixed(2))
   }
 
+  // INITIALIZATION
   function init() {
     $(showBmrSelection)
     $(showBmiSelection)

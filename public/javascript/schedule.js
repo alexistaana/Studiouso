@@ -233,9 +233,7 @@ $(document).ready(function () {
                     }
                 }
                 if (!checkIf) {
-                    $('#schedule-form').show(500, function (e) {
-                        $('#schedule-form').css({ 'position': 'absolute' })
-                    });
+                    $('#schedule-form').show(500);
                 }
                 else if (checkIf) {
                     alert("SELECTED DAY ALREADY HAS A SCHEDULE, PLEASE CHOOSE ANOTHER DATE")
