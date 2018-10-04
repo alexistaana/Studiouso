@@ -11,9 +11,8 @@ const { TEST_DATABASE_URL } = require('../config');
 
 chai.use(chaiHttp);
 
+//USER DATA
 function userData(){
-    console.log('creating user')
-
     const userData ={
         username: "Malexi",
         password: "password",
@@ -28,18 +27,15 @@ function userData(){
 }
 
 
+//BREAKS DOWN DATABASE
 function tearDownDb() {
   console.warn('Deleting database');
   return mongoose.connection.dropDatabase();
 }
 
+//START OF TEST FUNCTIONS
 describe('user test', function () {
 
-  // Before our tests run, we activate the server. Our `runServer`
-  // function returns a promise, and we return the that promise by
-  // doing `return runServer`. If we didn't return a promise here,
-  // there's a possibility of a race condition where our tests start
-  // running before our server has started.
   before(function () {
     return runServer(TEST_DATABASE_URL);
   });
@@ -52,11 +48,6 @@ describe('user test', function () {
     return tearDownDb();
   });
 
-  // although we only have one test module at the moment, we'll
-  // close our server at the end of these tests. Otherwise,
-  // if we add another test module that also has a `before` block
-  // that starts our server, it will cause an error because the
-  // server would still be running from the previous tests.
   after(function () {
     return closeServer();
   });
@@ -96,13 +87,10 @@ describe('user test', function () {
         expect(res.body).to.be.a('object');
         expect(res.body).to.include.keys('username', 'email');
         expect(res.body.id).to.not.equal(null);
-        // response should be deep equal to `newItem` from above if we assign
-        // `id` to it from `res.body.id`
-        // expect(res.body).to.deep.equal(Object.assign(newItem, { id: res.body.id }));
       });
   });
 
-  it('should update items on PUT', function () {
+  it('should update bmr on PUT', function () {
     let updateData;
 
     User.findOne({"username": "Malexi"})
