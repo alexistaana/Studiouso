@@ -56,10 +56,10 @@ describe('user test', function () {
     return chai.request(app)
       .get('/api/users/get')
       .then(function (res) {
-        console.log(res.body);
         expect(res).to.have.status(200);
         expect(res).to.be.json;
         expect(res.body).to.be.a('array');
+
         // each item should be an object with key/value pairs
         const expectedKeys = ['username', 'email', 'id'];
         res.body.forEach(function (item) {
