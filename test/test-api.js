@@ -26,13 +26,6 @@ function userData(){
     User.create(userData)
 }
 
-
-//BREAKS DOWN DATABASE
-function tearDownDb() {
-  console.warn('Deleting database');
-  return mongoose.connection.dropDatabase();
-}
-
 //START OF TEST FUNCTIONS
 describe('user test', function () {
 
@@ -42,10 +35,6 @@ describe('user test', function () {
 
   beforeEach(function () {
     return userData();
-  });
-
-  afterEach(function () {
-    return tearDownDb();
   });
 
   after(function () {
