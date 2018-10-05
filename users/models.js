@@ -13,11 +13,6 @@ const scheduleSchema = new mongoose.Schema({
     created: {type: Date, default:Date.now}
 })
 
-// const counterSchema = new mongoose.Schema({
-//     made: Number,
-//     finished: Number
-// })
-
 const UserSchema = mongoose.Schema({
     username: {
         type: String,

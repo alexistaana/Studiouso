@@ -112,8 +112,6 @@ router.post('/', jsonParser, (req, res) => {
             let scheduleCounter = 0;
             let taskCounter = 0;
 
-            // console.log("SERIALIZING")
-
             return User.create({
                 username,
                 password: hash,
@@ -126,8 +124,6 @@ router.post('/', jsonParser, (req, res) => {
 
         })
         .then(user => {
-            console.log("SERIALIZING")
-
             return res.status(201).json(user.serialize());
         })
         .catch(err => {
@@ -146,10 +142,6 @@ router.get('/', (req, res) => {
 
     User.findById(req.query.id).then(user => res.json(user))
         .catch(err => res.status(500).json({ message: 'Internal server error' }));
-
-    // return User.find()
-    //   .then(users => res.json(users.map(user => user.serialize())))
-    //   .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
 router.get('/get', (req,res) => {
