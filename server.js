@@ -97,35 +97,40 @@ app.get('/authenticated/schedule', (req, res) => {
 //POST REQUEST TO STORE BMR RESULTS
 app.put('/post/bmr', jsonParser, (req, res) => {
 
-  User.findByIdAndUpdate(req.body.id, {bmrResults:req.body.bmrResults})
-  .then(user => {
-    res.status(200).json(user);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(400).end()
-  })
+  User.findByIdAndUpdate(req.body.id, { bmrResults: req.body.bmrResults })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).end()
+    })
 
 })
 
 //POST REQUEST TO STORE BMI RESULTS
 app.put('/post/bmi', jsonParser, (req, res) => {
-  User.findByIdAndUpdate(req.body.id, {bmiResults:req.body.bmiResults})
-  .then(user => {
-    res.status(200).json(user);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(400).end()
-  })
+  User.findByIdAndUpdate(req.body.id, { bmiResults: req.body.bmiResults })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).end()
+    })
 })
 
 //PUT REQUEST TO STORE TASKS
 app.put('/post/task', jsonParser, (req, res) => {
-
   User.findByIdAndUpdate(req.body.id,
-    { $push: { "tasks": { description: req.body.description, 
-                          date: req.body.date } } })
+    {
+      $push: {
+        "tasks": {
+          description: req.body.description,
+          date: req.body.date
+        }
+      }
+    })
     .then(user => {
       res.status(200).json(user);
     })
@@ -139,8 +144,42 @@ app.put('/post/task', jsonParser, (req, res) => {
 app.put('/post/schedule', jsonParser, (req, res) => {
 
   User.findByIdAndUpdate(req.body.id,
-    { $push: { "schedule": { description: req.body.description, 
-                          date: req.body.date } } })
+    {
+      $push: {
+        "schedule": {
+          description: req.body.description,
+          date: req.body.date
+        }
+      }
+    })
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).end();
+    })
+})
+
+app.put('/put/schedule', jsonParser, (req, res) => {
+  User.updateOne(
+    { _id: req.body.id, "schedule.date": req.body.date },
+    { $set: { "schedule.$.description": req.body.description } }
+  )
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).end();
+    })
+})
+
+app.delete('/delete/schedule', jsonParser, (req, res) => {
+  User.updateOne(
+    { _id: req.body.id, "schedule.date": req.body.date },
+    { $pull: { schedule: {date: req.body.date} } } 
+  )
     .then(user => {
       res.status(200).json(user);
     })

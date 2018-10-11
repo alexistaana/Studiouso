@@ -165,8 +165,7 @@ li {
     font-size: 25px;
 }
 
-#login-form .input-form label,
-#create-account-form .input-form label {
+#login-form .input-form label, #create-account-form .input-form label {
     position: absolute;
     top: 25px;
     left: 30px;
@@ -177,16 +176,13 @@ li {
     text-transform: uppercase;
 }
 
-#login-form .input-form input:focus~label,
-#login-form .input-form input:valid ~ label,
-#create-account-form .input-form input:focus ~ label, 
-#create-account-form .input-form input:valid ~ label {
+#login-form .input-form input:focus~label, #login-form .input-form input:valid~label, #create-account-form .input-form input:focus~label, #create-account-form .input-form input:valid~label {
     top: 0;
     color: rgb(15, 180, 84);
     font-size: 25px;
 }
 
-.submit-btn {
+.submit-btn, #deleteBtn {
     text-align: center;
     padding: 40px;
     font-size: 30px;
@@ -198,19 +194,28 @@ li {
     transition: .5s;
 }
 
+#deleteBtn {
+    color: #E2472F
+}
+
+#deleteBtn:hover {
+    text-shadow: 0 0 40px #E2472F;
+    cursor: pointer;
+}
+
 .submit-btn:hover {
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
     cursor: pointer;
 }
 
-.hasSchedule{
+.hasSchedule {
     transition: .5s;
-    color:rgb(63, 215, 63) !important;
-    text-shadow: 0 0 40px rgb(63, 215, 63)  !important;
+    color: rgb(63, 215, 63) !important;
+    text-shadow: 0 0 40px rgb(63, 215, 63) !important;
 }
 
-.hasSchedule:hover{
+.hasSchedule:hover {
     transition: .5s;
     color: rgb(1, 253, 1) !important;
     text-shadow: 0 0 40px rgb(1, 253, 1) !important;

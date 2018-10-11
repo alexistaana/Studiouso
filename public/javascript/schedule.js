@@ -232,11 +232,13 @@ $(document).ready(function () {
                         break;
                     }
                 }
+
                 if (!checkIf) {
                     $('#schedule-form').show(500);
                 }
                 else if (checkIf) {
-                    alert("SELECTED DAY ALREADY HAS A SCHEDULE, PLEASE CHOOSE ANOTHER DATE")
+                    // alert("SELECTED DAY ALREADY HAS A SCHEDULE, PLEASE CHOOSE ANOTHER DATE")
+                    $('#schedule-form-update').show(500);
                 }
 
             });
@@ -249,6 +251,13 @@ $(document).ready(function () {
                 $('#schedSubBtn').show();
                 $('#postMsg').hide()
             });
+        })
+
+        $('#cancelScheduleUpdate').click(function (e) {
+            $('#schedule-form-update').hide(500, function (e) {
+                $('#schedSubBtnUpdate').show();
+                $('#updateMsg').hide();
+            })
         })
     }
 
@@ -266,6 +275,39 @@ $(document).ready(function () {
                 $('#schedSubBtn').fadeOut(500, function (event) {
                     $('#postMsg').fadeIn(500)
                 })
+            })
+        })
+    }
+
+    //WATCHES SUBMIT AND UPDATE BTN
+    function watchSubmitUpdateSchedule() {
+        $('#schedule-form-update').submit(event => {
+            event.preventDefault();
+            const targetOne = $(event.currentTarget).find('#message-form-schedule-update')
+
+            const scheduleMsg = targetOne.val()
+
+            targetOne.val('')
+
+            updateScheduleCall(scheduleMsg, function (e) {
+                $('#schedSubBtnUpdate').fadeOut(500, function (event) {
+                    $('#updateMsg').fadeIn(500)
+                })
+            })
+        })
+    }
+
+    //WATCHES DELETE BTN
+    function watchDeleteBtn() {
+        $('#deleteBtn').click(event => {
+            event.preventDefault();
+
+            deleteScheduleCall(function (e) {
+                console.log('SUCCESS')
+                $('#deleteBtn').fadeOut(500, function (event) {
+                    $('#deleteMsg').fadeIn(500)
+                })
+                $('#schedSubBtnUpdate').fadeOut(500);
             })
         })
     }
@@ -325,10 +367,73 @@ $(document).ready(function () {
         $.ajax(settings)
     }
 
+    //API REQUEST FOR UPDATE
+    function updateScheduleCall(schedule, callback) {
+        let jwt = localStorage.getItem('authToken')
+        var tokens = jwt.split('.')
+
+        const query =
+        {
+            id: JSON.parse(atob(tokens[1])).user.id,
+            date: localStorage.getItem('dateOfBtn'),
+            description: schedule,
+        }
+
+        localStorage.removeItem('dateOfBtn');
+
+        const settings =
+        {
+            url: '/put/schedule',
+            data: JSON.stringify(query),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'PUT',
+            success: callback,
+            error: function (e) {
+                window.alert('FAILED TO UPDATE SCHEDULE! PLEASE TRY AGAIN OR CONTACT DEVELOPER IF PROBLEM PERSISTS!')
+            }
+        }
+    }
+
+    //API REQUEST FOR DELETE
+    function deleteScheduleCall(callback) {
+        let jwt = localStorage.getItem('authToken')
+        var tokens = jwt.split('.')
+
+        const query =
+        {
+            id: JSON.parse(atob(tokens[1])).user.id,
+            date: localStorage.getItem('dateOfBtn')
+        }
+
+        localStorage.removeItem('dateOfBtn');
+
+        const settings =
+        {
+            url: '/delete/schedule',
+            data: JSON.stringify(query),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'DELETE',
+            success: callback,
+            error: function (e) {
+                window.alert('FAILED TO DELETE SCHEDULE! PLEASE TRY AGAIN OR CONTACT DEVELOPER IF PROBLEM PERSISTS!')
+            }
+        }
+
+        $.ajax(settings)
+    }
+
+
+    
+
+
     function init() {
         $(createCalender);
         $(watchDateBtn);
         $(watchSubmitSchedule);
+        $(watchSubmitUpdateSchedule);
+        $(watchDeleteBtn);
     }
 
     $(init);
