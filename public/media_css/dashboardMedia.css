@@ -4,7 +4,8 @@
     }
 
     #scheduleMsgDiv{
-        left: 278px !important;
+        left: 0px !important;
+        width: 100% !important;
     }
 }
 
@@ -68,10 +69,6 @@
 
 @media only screen and (max-width: 500px) {
     #daysInCalendar{
-        display: none;
-    }
-
-    #todayHead{
         display: none;
     }
 }

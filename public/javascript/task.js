@@ -319,6 +319,7 @@ $(document).ready(function () {
             targetOne.val('')
 
             updateTaskCall(taskMsg, function (e) {
+                console.log('success!!')
                 $('#taskSubBtnUpdate').fadeOut(500, function (event) {
                     $('#updateMsg').fadeIn(500)
                 })
@@ -378,6 +379,10 @@ $(document).ready(function () {
         let jwt = localStorage.getItem('authToken')
         var tokens = jwt.split('.')
 
+        console.log(JSON.parse(atob(tokens[1])).user.id,)
+        console.log(localStorage.getItem('dateOfBtn'))
+        console.log(task)
+
         const query =
         {
             id: JSON.parse(atob(tokens[1])).user.id,
@@ -389,7 +394,7 @@ $(document).ready(function () {
 
         const settings =
         {
-            url: '/put/task',
+            url: '/put/tasks',
             data: JSON.stringify(query),
             contentType: 'application/json',
             dataType: 'json',
@@ -416,7 +421,7 @@ $(document).ready(function () {
 
         const settings =
         {
-            url: '/delete/task',
+            url: '/delete/tasks',
             data: JSON.stringify(query),
             contentType: 'application/json',
             dataType: 'json',

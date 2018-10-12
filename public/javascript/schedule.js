@@ -293,6 +293,8 @@ $(document).ready(function () {
                 $('#schedSubBtnUpdate').fadeOut(500, function (event) {
                     $('#updateMsg').fadeIn(500)
                 })
+
+                $('#deleteBtn').fadeOut(500)
             })
         })
     }
@@ -349,7 +351,7 @@ $(document).ready(function () {
             date: localStorage.getItem('dateOfBtn')
         }
 
-        localStorage.removeItem('dateOfBtn');
+        localStorage.removeItem('date   OfBtn');
 
         const settings =
         {
@@ -425,7 +427,7 @@ $(document).ready(function () {
     }
 
 
-    
+
 
 
     function init() {

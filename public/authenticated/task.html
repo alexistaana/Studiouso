@@ -1,118 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8" name="description" content="An all-in-one daily
+<head>
+    <meta charset="UTF-8" name="description" content="An all-in-one daily
             planner that allows the user to track tasks set, schedules planned
             and current health goals such as the BMR and/or BMI.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" media="screen"
-            href="../main.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-            href="../media_css/indexMedia.css">
-        <link rel="stylesheet" type="text/css" media="screen"
-            href="../authenticated/media_css/editorMedia.css">
-        <link rel="stylesheet" type="text/css" media="screen"
-            href="../authenticated/css/task.css">
-        <link rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-            crossorigin="anonymous">
-        <link
-            href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
-            rel="stylesheet">
-        <link rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-            integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-            crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../media_css/indexMedia.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../authenticated/media_css/editorMedia.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../authenticated/css/task.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
 
-        <title>Task Editor</title>
+    <title>Task Editor</title>
 
-    </head>
+</head>
 
-    <body>
-        <main>
-            <div id="bckground">
-                <div id="taskBac">
-                    <div class="wrap">
-                        <!-- MENU BAR -->
-                        <nav id="navBar" class="authNav">
-                            <h1 id="logoBtn" class="logo navSelection">
-                                <i class="fas fa-book-reader"> Studiouso</i>
-                            </h1>
-                            <ul id="list">
-                                <li id="homeBtn">
-                                    <a class="navSelection">Home</a>
-                                </li>
-                                <li id="aboutBtn">
-                                    <a class="navSelection">About</a>
-                                </li>
-                                <li id="contactBtn">
-                                    <a class="navSelection">Contact</a>
-                                </li>
-                                <li id="signOutBtn">
-                                    <a class="navSelection">Sign Out</a>
-                                </li>
+<body>
+    <main>
+        <div id="bckground">
+            <div id="taskBac">
+                <div class="wrap">
+                    <!-- MENU BAR -->
+                    <nav id="navBar" class="authNav">
+                        <h1 id="logoBtn" class="logo navSelection">
+                            <i class="fas fa-book-reader"> Studiouso</i>
+                        </h1>
+                        <ul id="list">
+                            <li id="homeBtn">
+                                <a class="navSelection">Home</a>
+                            </li>
+                            <li id="aboutBtn">
+                                <a class="navSelection">About</a>
+                            </li>
+                            <li id="contactBtn">
+                                <a class="navSelection">Contact</a>
+                            </li>
+                            <li id="signOutBtn">
+                                <a class="navSelection">Sign Out</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <section id="taskBlock">
+                    <div id="taskScreen">
+                        <div id="taskContent">
+                            <div id="monthDiv">
+                                <h1 style="font-size: 35px;">Task Editor</h1>
+                                <ul id="monthUl">
+                                    <li id="prevBtn" class="monthTab">&#10094;</li>
+                                    <li id="calendarMonth" class="monthTab" aria-live="polite">
+                                    </li>
+                                    <li id="nextBtn" class="monthTab">&#10095;</li>
+                                </ul>
+                            </div>
+
+                            <ul id="daysInCalendar">
+                                <li>Sunday</li>
+                                <li>Monday</li>
+                                <li>Tuesday</li>
+                                <li>Wednesday</li>
+                                <li>Thursday</li>
+                                <li>Friday</li>
+                                <li>Saturday</li>
                             </ul>
-                        </nav>
-                    </div>
-                    <section id="taskBlock">
-                        <div id="taskScreen">
-                            <div id="taskContent">
-                                <div id="monthDiv">
-                                    <h1 style="font-size: 35px;">Task Editor</h1>
-                                    <ul id="monthUl">
-                                        <li id="prevBtn" class="monthTab">&#10094;</li>
-                                        <li id="calendarMonth" class="monthTab" aria-live="polite">
-                                        </li>
-                                        <li id="nextBtn" class="monthTab">&#10095;</li>
-                                    </ul>
+
+                            <ul id="daysOfMonth" aria-live="polite">
+                            </ul>
+
+                            <form action="#" id="task-form" style="display:
+                                    none;">
+                                <div>
+                                    <button type="reset" class="fas
+                                            fa-times" id="cancelTask"></button>
                                 </div>
 
-                                <ul id="daysInCalendar">
-                                    <li>Sunday</li>
-                                    <li>Monday</li>
-                                    <li>Tuesday</li>
-                                    <li>Wednesday</li>
-                                    <li>Thursday</li>
-                                    <li>Friday</li>
-                                    <li>Saturday</li>
-                                </ul>
+                                <div class="input-form-editor">
+                                    <textarea type="text" maxlength="220" placeholder="Enter Task (MAX 220
+                                            CHARACTERS)" id="message-form-task" aria-labelledby="task of user" rows="5"
+                                        required></textarea>
+                                </div>
+                                <input class="submit-btn" type="submit" id="taskSubBtn" value="SUBMIT" style="color: white;">
+                                <h1 style="display: none;" id="postMsg">POSTED!</h1>
+                            </form>
+                            <form action="#" id="task-form-update" style="display:
+                                none;">
+                                <div>
+                                    <button type="reset" class="fas
+                                        fa-times" id="cancelTaskUpdate"></button>
+                                </div>
 
-                                <ul id="daysOfMonth" aria-live="polite">
-                                </ul>
+                                <div class="input-form-editor">
+                                    <textarea type="text" maxlength="430" placeholder="Enter Updated Task
+                                        (MAX 430
+                                        CHARACTERS)" id="message-form-task-update" aria-labelledby="schedule of user" rows="5"></textarea>
+                                </div>
+                                <input class="submit-btn" type="submit" id="taskSubBtnUpdate" value="SUBMIT" style="color: white;">
+                                <button id="deleteBtn">DELETE?</button>
+                                <h1 style="display: none;" id="deleteMsg">DELETED!</h1>
+                                <h1 style="display: none;" id="updateMsg">UPDATED!</h1>
+                            </form>
 
-                                <form action="#" id="task-form" style="display:
-                                    none;">
-                                    <div>
-                                        <button type="reset" class="fas
-                                            fa-times" id="cancelTask"></button>
-                                    </div>
-
-                                    <div class="input-form-editor">
-                                        <textarea type="text"
-                                            maxlength="220"
-                                            placeholder="Enter Task (MAX 220
-                                            CHARACTERS)"
-                                            id="message-form-task"
-                                            aria-labelledby="task of user"
-                                            rows="5" required></textarea>
-                                    </div>
-                                    <input class="submit-btn" type="submit"
-                                        id="taskSubBtn"
-                                        value="SUBMIT" style="color: white;">
-                                    <h1 style="display: none;" id="postMsg">POSTED!</h1>
-                                </form>
-                            </div>
                         </div>
-                    </section>
-                </div>
-            </main>
-        </body>
+                    </div>
+                </section>
+            </div>
+    </main>
+</body>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script type="text/javascript" src="../javascript/app.js"></script>
-        <script type="text/javascript"
-            src="../javascript/task.js"></script>
-    </html>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../javascript/app.js"></script>
+<script type="text/javascript" src="../javascript/task.js"></script>
+
+</html>

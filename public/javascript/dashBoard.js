@@ -277,11 +277,13 @@ $(document).ready(function (e) {
             let date = new Date()
             let monthToday = date.getMonth()
             let yearToday = date.getFullYear()
-            let dayToday = date.getDay();
+            let dayToday = date.getDate();
             let tempArr = user.tasks
             let ifAvailable = false;
             let temp = `${monthToday + 1}/${dayToday}/${yearToday}`
             let txtMsg;
+
+            console.log(temp)
 
             for (let i = 0; i < tempArr.length; ++i) {
                 if (temp == tempArr[i].date) {

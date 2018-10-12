@@ -62,10 +62,14 @@
     }
 }
 
-@media only screen and (max-width: 450px) {
-    #navBar {
-        display: none;
+@media only screen and (max-width: 462px){
+    #bckground{
+        width: auto;
     }
+}
+
+
+@media only screen and (max-width: 450px) {
     .submit-btn {
         font-size: 15px;
     }

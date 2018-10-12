@@ -93,7 +93,7 @@ ul {list-style-type: none;}
     letter-spacing: 3px;
 }
 
-#task-form{
+#task-form, #task-form-update{
     position: absolute;
     width: 30%;
     height: 50%;
@@ -102,7 +102,7 @@ ul {list-style-type: none;}
     background: #251b1f;
 }
 
-#message-form-task{
+#message-form-task, #message-form-task-update{
     background: transparent;
     outline: none;
     width: 80%;
@@ -113,7 +113,7 @@ ul {list-style-type: none;}
     color: white;
 }
 
-#cancelTask{
+#cancelTask, #cancelTaskUpdate{
     margin-top: 10px;
     padding-top: 10px;
     margin-right: 10px;
