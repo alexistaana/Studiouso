@@ -211,11 +211,37 @@ li {
 
 .hasSchedule {
     transition: .5s;
+    color: rgb(25, 217, 210) !important;
+    text-shadow: 0 0 40px rgb(25, 217, 210) !important;
+}
+
+.hasSchedule:hover {
+    transition: .5s;
+    color: rgb(95, 255, 249) !important;
+    text-shadow: 0 0 40px rgb(95, 255, 249) !important;
+    cursor: pointer;
+}
+
+.hasTask {
+    transition: .5s;
+    color: rgb(240, 149, 33) !important;
+    text-shadow: 0 0 40px rgb(240, 149, 33) !important;
+}
+
+.hasTask:hover {
+    transition: .5s;
+    color: rgb(251, 174, 77) !important;
+    text-shadow: 0 0 40px rgb(251, 174, 77) !important;
+    cursor: pointer;
+}
+
+.hasBoth {
+    transition: .5s;
     color: rgb(63, 215, 63) !important;
     text-shadow: 0 0 40px rgb(63, 215, 63) !important;
 }
 
-.hasSchedule:hover {
+.hasBoth:hover {
     transition: .5s;
     color: rgb(1, 253, 1) !important;
     text-shadow: 0 0 40px rgb(1, 253, 1) !important;

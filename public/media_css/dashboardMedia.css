@@ -1,75 +1,78 @@
 @media only screen and (max-width: 1110px) {
-    .navSelection{
+    .navSelection {
         font-size: 30px;
     }
-
-    #scheduleMsgDiv{
+    #scheduleMsgDiv {
         left: 0px !important;
         width: 100% !important;
+        height: 100% !important;
     }
 }
 
 @media only screen and (max-width: 880px) {
-    .navSelection{
+    .navSelection {
         font-size: 25px !important;
     }
-
-    #menuHead, #todayHead, .statsHead{
+    #menuHead, #todayHead, .statsHead {
         font-size: 70px !important;
     }
-
-    #statsOverview, #todayNo{
+    #statsOverview, #todayNo {
         font-size: 30px !important;
     }
-
-    #daysOfMonth li, #daysInCalendar li{
+    #daysOfMonth li, #daysInCalendar li {
         font-size: 15px !important;
     }
-
-    #dashBoardBlock{
+    #dashBoardBlock {
         height: 100%;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .navSelection{
+    .navSelection {
         font-size: 20px !important;
     }
-
-    #menuHead, #todayHead, .statsHead{
+    #menuHead, #todayHead, .statsHead {
         font-size: 55px !important;
     }
-
-    #statsOverview, #todayNo{
+    #statsOverview, #todayNo {
         font-size: 24px !important;
     }
-
-    #daysOfMonth li, #daysInCalendar li{
+    #daysOfMonth li, #daysInCalendar li {
         font-size: 13px !important;
     }
-
-    #dashBoardBlock{
+    #dashBoardBlock {
         height: 100%;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    #statsBlock{
+    #statsBlock {
         display: none;
     }
-
-    #plannerBlock, #dashBoardScreen{
+    #plannerBlock, #dashBoardScreen {
         width: auto !important;
     }
-
-    #scheduleMsg{
+    #scheduleMsg {
         font-size: 20px !important;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    #daysInCalendar{
+    #daysInCalendar {
         display: none;
+    }
+
+    #todayNo{
+        margin-left: 0px !important;
     }
 }
 
+@media only screen and (max-width: 420px) {
+    #dashBoardBlock {
+        height: 1092px;
+    }
+
+    #monthDiv ul li {
+        font-size: 28px;
+    }
+}

@@ -47,62 +47,62 @@
     left: 13px;
 }
 
-#daysOfMonth li, #nextBtn, #prevBtn{
+#daysOfMonth li, #nextBtn, #prevBtn {
     transition: .5s;
 }
 
-
-#daysOfMonth li:hover, #nextBtn:hover, #prevBtn:hover, #cancelSchedule:hover{
+#daysOfMonth li:hover, #nextBtn:hover, #prevBtn:hover, #cancelSchedule:hover {
     transition: .5s;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 40px #ffffff;
     cursor: pointer;
 }
 
-#prevBtn{
+#prevBtn {
     float: left;
-    
 }
 
-#nextBtn{
+#nextBtn {
     float: right;
 }
 
-.monthTab{
+.monthTab {
     font-size: 35px;
-} 
+}
 
-ul {list-style-type: none;}
+ul {
+    list-style-type: none;
+}
 
-#monthDiv{
+#monthDiv {
     text-transform: uppercase;
     letter-spacing: 3px;
     width: 100%;
     text-align: center;
 }
 
-#monthDiv ul{
+#monthDiv ul {
     margin: 0;
     padding: 20px;
     border-bottom: solid;
     margin-bottom: 25px;
 }
 
-#monthDiv ul li{
+#monthDiv ul li {
     text-transform: uppercase;
     letter-spacing: 3px;
 }
 
-#schedule-form, #schedule-form-update{
+#schedule-form, #schedule-form-update {
     position: absolute;
     width: 30%;
-    height: 50%;
+    height: 65%;
     left: 648px;
     top: 147px;
     background: #251b1f;
 }
 
-#message-form-schedule, #message-form-schedule-update{
+#message-form-schedule, #message-form-schedule-update {
     background: transparent;
     outline: none;
     width: 80%;
@@ -113,7 +113,7 @@ ul {list-style-type: none;}
     color: white;
 }
 
-#cancelSchedule, #cancelScheduleUpdate{
+#cancelSchedule, #cancelScheduleUpdate {
     margin-top: 10px;
     padding-top: 10px;
     margin-right: 10px;

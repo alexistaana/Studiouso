@@ -1,5 +1,5 @@
 @media only screen and (max-width: 1080px) {
-    #schedule-form, #task-form {
+    #schedule-form, #task-form, #schedule-form-update, #task-form-update {
         left: 351px !important;
         width: 50% !important;
     }
@@ -18,6 +18,9 @@
     #navBar #list li a {
         font-size: 20px;
     }
+    #schedule-form, #task-form, #schedule-form-update, #task-form-update {
+        left: 300px !important;
+    }
     #schedule-form, #task-form {
         left: 169px !important;
     }
@@ -26,28 +29,40 @@
 @media only screen and (max-width: 666px) {
     #navBar #list li a {
         font-size: 15px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        padding-left: 5px;
     }
 }
 
 @media only screen and (max-width: 608px) {
-    
     #scheduleScreen, #taskScreen {
         width: auto !important;
     }
     #scheduleBlock, #taskBlock {
         height: 100% !important;
     }
+
+    #schedule-form, #task-form, #schedule-form-update, #task-form-update {
+        left: 0px !important;
+        width: 100% !important;
+    }
+
 }
 
 @media only screen and (max-width: 450px) {
-    #schedule-form, #task-form {
-        left: 42px !important;
-        width: 84% !important;
+    #schedule-form, #task-form, #schedule-form-update, #task-form-update {
+        left: 0px !important;
+        width: 100% !important;
     }
 }
 
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 338px) {
     #daysInCalendar {
         display: none;
+    }
+
+    #navBar #list li a {
+        padding-left: 20px;
     }
 }

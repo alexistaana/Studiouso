@@ -272,9 +272,10 @@ $(document).ready(function () {
             targetOne.val('')
 
             postScheduleRequest(scheduleMsg, function (e) {
-                $('#schedSubBtn').fadeOut(500, function (event) {
-                    $('#postMsg').fadeIn(500)
-                })
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#schedule-form').hide(500)
+                createCalender();
             })
         })
     }
@@ -290,11 +291,10 @@ $(document).ready(function () {
             targetOne.val('')
 
             updateScheduleCall(scheduleMsg, function (e) {
-                $('#schedSubBtnUpdate').fadeOut(500, function (event) {
-                    $('#updateMsg').fadeIn(500)
-                })
-
-                $('#deleteBtn').fadeOut(500)
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#schedule-form-update').hide(500)
+                createCalender();
             })
         })
     }
@@ -305,11 +305,10 @@ $(document).ready(function () {
             event.preventDefault();
 
             deleteScheduleCall(function (e) {
-                console.log('SUCCESS')
-                $('#deleteBtn').fadeOut(500, function (event) {
-                    $('#deleteMsg').fadeIn(500)
-                })
-                $('#schedSubBtnUpdate').fadeOut(500);
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#schedule-form-update').hide(500)
+                createCalender();
             })
         })
     }
@@ -374,6 +373,8 @@ $(document).ready(function () {
         let jwt = localStorage.getItem('authToken')
         var tokens = jwt.split('.')
 
+        // console.log(localStorage.getItem('dateOfBtn'))
+
         const query =
         {
             id: JSON.parse(atob(tokens[1])).user.id,
@@ -383,10 +384,16 @@ $(document).ready(function () {
 
         localStorage.removeItem('dateOfBtn');
 
+        console.log(schedule);
+        console.log(query.date);
+        console.log(query.id)
+        // console.log("API CLAL")
+
         const settings =
         {
             url: '/put/schedule',
             data: JSON.stringify(query),
+            // data: query,
             contentType: 'application/json',
             dataType: 'json',
             type: 'PUT',
@@ -395,6 +402,8 @@ $(document).ready(function () {
                 window.alert('FAILED TO UPDATE SCHEDULE! PLEASE TRY AGAIN OR CONTACT DEVELOPER IF PROBLEM PERSISTS!')
             }
         }
+
+        $.ajax(settings)
     }
 
     //API REQUEST FOR DELETE

@@ -95,7 +95,7 @@ $(document).ready(function () {
                     of user feet" required="">
                 <label for="height-form-calc">Height
                     (ft)</label>
-              </div>
+              </div>  
           </div>`
       $('#checkHeightDiv').fadeOut(500, function (e) {
         $('#heightBmrBox').fadeIn(500)

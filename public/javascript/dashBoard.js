@@ -102,6 +102,8 @@ $(document).ready(function (e) {
             let blocksDay = ""
 
             let tempArr = user.schedule
+            let tempArrTask = user.tasks
+
             let asnDate
 
             //GENERATES EMPTY SPACES
@@ -126,6 +128,20 @@ $(document).ready(function (e) {
                     if (asnDate == tempArr[j].date) {
                         $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
                     }
+                }
+                for (let j = 0; j < tempArrTask.length; ++j) {
+                    if (asnDate == tempArrTask[j].date) {
+                        $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
+
+                    }
+                }
+            }
+
+            //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
+            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+                if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
+                    $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
                 }
             }
 
@@ -163,6 +179,20 @@ $(document).ready(function (e) {
                                 $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
                             }
                         }
+                        for (let j = 0; j < tempArrTask.length; ++j) {
+                            if (asnDate == tempArrTask[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
+
+                            }
+                        }
+                    }
+
+                    //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+                        if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
+                            $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
+                        }
                     }
                 }
                 else {
@@ -194,6 +224,20 @@ $(document).ready(function (e) {
                             if (asnDate == tempArr[j].date) {
                                 $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
                             }
+                        }
+                        for (let j = 0; j < tempArrTask.length; ++j) {
+                            if (asnDate == tempArrTask[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
+
+                            }
+                        }
+                    }
+
+                    //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+                        if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
+                            $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
                         }
                     }
                 }
@@ -231,6 +275,20 @@ $(document).ready(function (e) {
                                 $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
                             }
                         }
+                        for (let j = 0; j < tempArrTask.length; ++j) {
+                            if (asnDate == tempArrTask[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
+
+                            }
+                        }
+                    }
+
+                    //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+                        if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
+                            $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
+                        }
                     }
 
                 }
@@ -263,6 +321,20 @@ $(document).ready(function (e) {
                                 $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
                             }
                         }
+                        for (let j = 0; j < tempArrTask.length; ++j) {
+                            if (asnDate == tempArrTask[j].date) {
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
+
+                            }
+                        }
+                    }
+
+                    //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
+                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                        asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
+                        if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
+                            $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
+                        }
                     }
 
                 }
@@ -272,8 +344,8 @@ $(document).ready(function (e) {
 
     // CHECKS IF THERE ARE TASKS TODAY, IF SO POPULATE
     function checkAndPopulateTask() {
-        getUserInfo(function (user) {
 
+        getUserInfo(function (user) {
             let date = new Date()
             let monthToday = date.getMonth()
             let yearToday = date.getFullYear()
@@ -282,8 +354,6 @@ $(document).ready(function (e) {
             let ifAvailable = false;
             let temp = `${monthToday + 1}/${dayToday}/${yearToday}`
             let txtMsg;
-
-            console.log(temp)
 
             for (let i = 0; i < tempArr.length; ++i) {
                 if (temp == tempArr[i].date) {
@@ -327,7 +397,7 @@ $(document).ready(function (e) {
 
                 if (ifFound) {
                     $('#scheduleMsg').html('')
-                    $('#scheduleMsg').prepend(`<h1>${tempDate}</h1>`)
+                    $('#scheduleMsg').prepend(`<h1>${tempDate}</h1> <h1>Schedule</h1>`)
                     $('#scheduleMsg').append(tempDescription)
                     $('#scheduleMsgDiv').show(500)
                 }
@@ -339,6 +409,93 @@ $(document).ready(function (e) {
             $('#scheduleMsgDiv').hide(500)
         })
     }
+
+    function viewTaskDetail() {
+        getUserInfo(function (user) {
+
+            let tempArr = user.tasks
+            $('#daysOfMonth').on('click', '.hasTask', function (e) {
+                let numPart = e.target.id;
+                let tempDescription;
+                let ifFound = false;
+                numPart = numPart.slice(13)
+
+                let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
+
+                for (i = 0; i < user.tasks.length; ++i) {
+                    if (tempDate == user.tasks[i].date) {
+                        tempDescription = user.tasks[i].description;
+                        ifFound = true;
+                        break;
+                    }
+                }
+
+                if (ifFound) {
+                    $('#scheduleMsg').html('')
+                    $('#scheduleMsg').prepend(`<h1>${tempDate}</h1> <h1>Task</h1>`)
+
+                    $('#scheduleMsg').append(tempDescription)
+                    $('#scheduleMsgDiv').show(500)
+                }
+            })
+        })
+
+        //CLOSES schedule BTN  
+        $('#closeBtn').click(function (e) {
+            $('#scheduleMsgDiv').hide(500)
+        })
+    }
+
+    function viewScheduleAndTaskDetail() {
+        getUserInfo(function (user) {
+
+            let tempArr = user.schedule
+            $('#daysOfMonth').on('click', '.hasBoth', function (e) {
+                let numPart = e.target.id;
+                let tempDescription;
+                let tempDescriptionTask;
+                let ifFound = false;
+                let ifFoundTask = false;
+                
+                numPart = numPart.slice(13)
+
+                let tempDate = `${monthCounter}/${numPart}/${yearCounter}`
+
+                for (i = 0; i < user.schedule.length; ++i) {
+                    if (tempDate == user.schedule[i].date) {
+                        tempDescription = user.schedule[i].description;
+                        ifFound = true;
+                        break;
+                    }
+                }
+
+                for (i = 0; i < user.tasks.length; ++i) {
+                    if (tempDate == user.tasks[i].date) {
+                        tempDescriptionTask = user.tasks[i].description;
+                        ifFoundTask = true;
+                        break;
+                    }
+                }
+
+                if (ifFound) {
+                    $('#scheduleMsg').html('')
+                    $('#scheduleMsg').prepend(`<h1>${tempDate}</h1> <h1>Schedule</h1>`)
+                    $('#scheduleMsg').append(tempDescription)
+                    $('#scheduleMsg').append(`<h1>Task</h1>`)
+                    $('#scheduleMsg').append(tempDescriptionTask)
+                    $('#scheduleMsgDiv').show(500)
+                }
+            })
+        })
+
+        //CLOSES schedule BTN  
+        $('#closeBtn').click(function (e) {
+            $('#scheduleMsgDiv').hide(500)
+        })
+    }
+
+
+
 
     //GETS USER INFO
     function getUserInfo(callback) {
@@ -372,6 +529,8 @@ $(document).ready(function (e) {
         $(generateCalendarSchedule)
         $(checkAndPopulateTask)
         $(viewScheduleDetail)
+        $(viewTaskDetail)
+        $(viewScheduleAndTaskDetail)
     }
 
     $(init)

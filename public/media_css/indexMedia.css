@@ -60,17 +60,22 @@
     .authNav {
         padding-right: 43px !important;
     }
-}
-
-@media only screen and (max-width: 462px){
-    #bckground{
+    #navBar {
+        padding: 10px 15px;
+    }
+    #loginScreen {
         width: auto;
     }
 }
 
+@media only screen and (max-width: 462px) {
+    #bckground {
+        width: auto;
+    }
+}
 
 @media only screen and (max-width: 450px) {
-    .submit-btn {
+    .submit-btn, #deleteBtn {
         font-size: 15px;
     }
     #contactScreen {

@@ -163,12 +163,14 @@ app.put('/post/schedule', jsonParser, (req, res) => {
 
 //CHANGES SCHEDULE MESSAGE
 app.put('/put/schedule', jsonParser, (req, res) => {
+
   User.updateOne(
     { _id: req.body.id, "schedule.date": req.body.date },
     { $set: { "schedule.$.description": req.body.description } }
   )
     .then(user => {
-      res.status(200).json(user);
+      console.log('success!');
+      res.status(200).json(user).end();
     })
     .catch(err => {
       console.log(err);
@@ -191,14 +193,13 @@ app.delete('/delete/schedule', jsonParser, (req, res) => {
     })
 })
 
-//CHANGES SCHEDULE MESSAGE
+//CHANGES TASK MESSAGE
 app.put('/put/tasks', jsonParser, (req, res) => {
   User.updateOne(
     { _id: req.body.id, "tasks.date": req.body.date },
     { $set: { "tasks.$.description  ": req.body.description } }
   )
     .then(user => {
-      console.log(HAI);
       res.status(200).json(user);
     })
     .catch(err => {
@@ -207,7 +208,7 @@ app.put('/put/tasks', jsonParser, (req, res) => {
     })
 })
 
-//DELETES SCHEDULE MESSAGE
+//DELETES TASK MESSAGE
 app.delete('/delete/tasks', jsonParser, (req, res) => {
   User.updateOne(
     { _id: req.body.id, "tasks.date": req.body.date },

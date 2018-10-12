@@ -58,7 +58,7 @@ $(document).ready(function () {
 
                 for (let j = 0; j < tempArr.length; ++j) {
                     if (asnDate == tempArr[j].date) {
-                        $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                        $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
                     }
                 }
             }
@@ -93,7 +93,7 @@ $(document).ready(function () {
 
                         for (let j = 0; j < tempArr.length; ++j) {
                             if (asnDate == tempArr[j].date) {
-                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
                             }
                         }
                     }
@@ -129,7 +129,7 @@ $(document).ready(function () {
 
                         for (let j = 0; j < tempArr.length; ++j) {
                             if (asnDate == tempArr[j].date) {
-                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
                             }
                         }
                     }
@@ -167,7 +167,7 @@ $(document).ready(function () {
 
                         for (let j = 0; j < tempArr.length; ++j) {
                             if (asnDate == tempArr[j].date) {
-                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
                             }
                         }
                     }
@@ -200,7 +200,7 @@ $(document).ready(function () {
 
                         for (let j = 0; j < tempArr.length; ++j) {
                             if (asnDate == tempArr[j].date) {
-                                $(`#dayOfTheMonth${i + 1}`).addClass("hasSchedule")
+                                $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
                             }
                         }
                     }
@@ -291,7 +291,6 @@ $(document).ready(function () {
     //WATCHES SUBMIT BTN
     function watchSubmitTask() {
         $('#task-form').submit(event => {
-            console.log("CLICKED!")
             event.preventDefault();
             const targetOne = $(event.currentTarget).find('#message-form-task')
 
@@ -300,10 +299,12 @@ $(document).ready(function () {
             targetOne.val('')
 
             postTaskRequest(taskMsg, function (event) {
-                // event.preventDefault();
-                $('#taskSubBtn').fadeOut(500, function (event) {
-                    $('#postMsg').fadeIn(500)
-                })
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#task-form').hide(500)
+
+                //UPDATES PAGE
+                createCalender();
             })
         })
     }
@@ -319,10 +320,12 @@ $(document).ready(function () {
             targetOne.val('')
 
             updateTaskCall(taskMsg, function (e) {
-                console.log('success!!')
-                $('#taskSubBtnUpdate').fadeOut(500, function (event) {
-                    $('#updateMsg').fadeIn(500)
-                })
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#task-form-update').hide(500)
+
+                //UPDATES PAGE
+                createCalender();
             })
         })
     }
@@ -334,11 +337,12 @@ $(document).ready(function () {
             event.preventDefault();
 
             deleteTaskCall(function (e) {
-                console.log('SUCCESS')
-                $('#deleteBtn').fadeOut(500, function (event) {
-                    $('#deleteMsg').fadeIn(500)
-                })
-                $('#taskSubBtnUpdate').fadeOut(500);
+                $('#calendarMonth').html('')
+                $('#daysOfMonth').html('')
+                $('#task-form-update').hide(500)
+
+                //UPDATES PAGE
+                createCalender();
             })
         })
     }
@@ -379,10 +383,6 @@ $(document).ready(function () {
         let jwt = localStorage.getItem('authToken')
         var tokens = jwt.split('.')
 
-        console.log(JSON.parse(atob(tokens[1])).user.id,)
-        console.log(localStorage.getItem('dateOfBtn'))
-        console.log(task)
-
         const query =
         {
             id: JSON.parse(atob(tokens[1])).user.id,
@@ -404,6 +404,8 @@ $(document).ready(function () {
                 window.alert('FAILED TO UPDATE TASK! PLEASE TRY AGAIN OR CONTACT DEVELOPER IF PROBLEM PERSISTS!')
             }
         }
+
+        $.ajax(settings)
     }
 
     //API REQUEST FOR DELETE
