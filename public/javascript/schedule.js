@@ -41,21 +41,21 @@ $(document).ready(function () {
             let asnDate
             let tempArr = user.schedule
 
-
+            //GENERATES EMPTY SPACES
             for (let i = 0; i < firstDayMonth.getDay(); i++) {
                 blocksDay += `<li style="display: inline-block; height: 24px"></li>`
             }
 
-
-            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+            //GENERATES FILLED SPACES (NUMBERED SPACES) 
+            for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                 blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
             }
 
             $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
             $('#daysOfMonth').append(blocksDay)
 
-            //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+            //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS (NUMBERED SPOTS)
+            for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                 asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                 for (let j = 0; j < tempArr.length; ++j) {
@@ -83,7 +83,7 @@ $(document).ready(function () {
                     yearToday = yearCounter
 
                     //FILLED SPACE
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
                     $('#daysOfMonth').html(blocksDay)
 
                     //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, date.getFullYear()); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
@@ -125,7 +125,7 @@ $(document).ready(function () {
                     $('#daysOfMonth').html(blocksDay)
 
                     //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -154,7 +154,7 @@ $(document).ready(function () {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
@@ -162,7 +162,7 @@ $(document).ready(function () {
                     $('#daysOfMonth').html(blocksDay)
 
                     //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -188,7 +188,7 @@ $(document).ready(function () {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
@@ -196,7 +196,7 @@ $(document).ready(function () {
                     $('#daysOfMonth').html(blocksDay)
 
                     //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {

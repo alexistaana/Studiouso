@@ -111,8 +111,8 @@ $(document).ready(function (e) {
                 blocksDay += `<li style="display: inline-block; height: 24px"></li>`
             }
 
-            //GENERATES FILLED SPACES
-            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+            //GENERATES FILLED SPACES (NUMBERED SPACES) 
+            for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                 blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
             }
 
@@ -121,7 +121,7 @@ $(document).ready(function (e) {
 
 
             //FOR LOOP THAT HIGHLIGHTS FILLED SPOTS
-            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+            for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                 asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                 for (let j = 0; j < tempArr.length; ++j) {
@@ -138,7 +138,7 @@ $(document).ready(function (e) {
             }
 
             //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
-            for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+            for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                 asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
                 if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
                     $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
@@ -164,14 +164,14 @@ $(document).ready(function (e) {
                     yearToday = yearCounter
 
                     //FILLED SPACE
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
                     $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
                     $('#daysOfMonth').html(blocksDay)
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -180,7 +180,7 @@ $(document).ready(function (e) {
                             }
                         }
                         for (let j = 0; j < tempArrTask.length; ++j) {
-                            if (asnDate == tempArrTask[j].date) {
+                             if (asnDate == tempArrTask[j].date) {
                                 $(`#dayOfTheMonth${i + 1}`).addClass("hasTask")
 
                             }
@@ -188,7 +188,7 @@ $(document).ready(function (e) {
                     }
 
                     //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
                         if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
                             $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
@@ -201,7 +201,7 @@ $(document).ready(function (e) {
                     monthCounter = 12
                     yearCounter--;
 
-                    let firstDayMonth = new Date(yearCounter, monthCounter - 1, 1)
+                    let firstDayMonth = new Date(yearCounter, monthCounter, 1)
 
                     for (let i = 0; i < firstDayMonth.getDay(); i++) {
                         blocksDay += `<li style="display: inline-block; height: 24px"></li>`
@@ -210,14 +210,14 @@ $(document).ready(function (e) {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, date.getFullYear()); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
                     $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
                     $('#daysOfMonth').html(blocksDay)
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -260,14 +260,14 @@ $(document).ready(function (e) {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
                     $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
                     $('#daysOfMonth').html(blocksDay)
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -284,7 +284,7 @@ $(document).ready(function (e) {
                     }
 
                     //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
                         if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
                             $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");
@@ -306,14 +306,14 @@ $(document).ready(function (e) {
                     monthToday = months[(monthCounter - 1)]
                     yearToday = yearCounter
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         blocksDay += `<li class="filledDay" id="dayOfTheMonth${i + 1}">${i + 1}</li>`
                     }
 
                     $('#calendarMonth').html(`${monthToday}<br><span="font-size:18px">${yearToday}</span>`)
                     $('#daysOfMonth').html(blocksDay)
 
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
 
                         for (let j = 0; j < tempArr.length; ++j) {
@@ -330,7 +330,7 @@ $(document).ready(function (e) {
                     }
 
                     //CHECKS IF IT HAS BOTH SCHEDULE AND TASK
-                    for (let i = 0; i < daysInMonth(monthCounter - 1, yearCounter); ++i) {
+                    for (let i = 0; i < daysInMonth(monthCounter, yearCounter); ++i) {
                         asnDate = `${monthCounter}/${i + 1}/${yearCounter}`
                         if ($(`#dayOfTheMonth${i + 1}`).hasClass("hasSchedule") && $(`#dayOfTheMonth${i + 1}`).hasClass("hasTask")) {
                             $(`#dayOfTheMonth${i + 1}`).removeClass("hasSchedule").removeClass("hasTask").addClass("hasBoth");

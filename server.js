@@ -37,6 +37,11 @@ passport.use(jwtStrategy)
 app.use('/api/users/', usersRouter)
 app.use('/api/auth/', authRouter)
 
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
+
+
 const jwtAuth = passport.authenticate('jwt', { session: false })
 
 app.get('/checkAuth', jwtAuth, (req, res) => {

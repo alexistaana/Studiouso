@@ -165,6 +165,11 @@ li {
     font-size: 25px;
 }
 
+input[type="text"]
+{
+    font-family: 'Markazi Text', serif;
+}
+
 #login-form .input-form label, #create-account-form .input-form label {
     position: absolute;
     top: 25px;
@@ -184,13 +189,13 @@ li {
 
 .submit-btn, #deleteBtn {
     text-align: center;
-    padding: 40px;
-    font-size: 30px;
+    font-family: 'Markazi Text', serif;
+    padding: 20px;
+    font-size: 40px;
     background: rgba(0, 0, 0, 0);
     border: none;
     text-transform: uppercase;
-    font-weight: bold;
-    color: wheat;
+    color: wheat;   
     transition: .5s;
 }
 
@@ -246,4 +251,8 @@ li {
     color: rgb(1, 253, 1) !important;
     text-shadow: 0 0 40px rgb(1, 253, 1) !important;
     cursor: pointer;
+}
+
+b{
+    font-weight: 100;
 }

@@ -44,7 +44,7 @@
 #contact-form .input-form label {
     position: absolute;
     top: 25px;
-    left: 30px;
+    left: 37px;
     padding: 10px 0;
     font-size: 35px;
     pointer-events: none;
@@ -58,6 +58,7 @@
     top: 0;
     color: rgb(15, 180, 84);
     font-size: 25px;
+    left: 30px;
 }
 
 
@@ -77,5 +78,9 @@
     top: -20px;
     color: rgb(15, 180, 84);
     font-size: 25px;
+    left: 30px;
 }
 
+#sendBtn{
+    padding: 0;
+}

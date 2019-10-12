@@ -36,7 +36,7 @@
 }
 
 #statsBlock {
-    background-color: whitesmoke;
+    background-color: #e0d7b6;
     width: 25%;
     margin: 0;
     padding: 0;
@@ -76,14 +76,16 @@
     padding: 30px;
     padding-bottom: 10px;
     font-size: 140px;
+    font-weight: 100;
 }
 
 #todayNo {
     font-size: 40px;
     margin: 0;
     padding: 10px;
-    margin-left: 100px;
-    color: rgb(204, 255, 204)
+    margin-left: 70px;
+    color: rgb(204, 255, 204);
+    font-weight: 100;
 }
 
 #dailyTask {
@@ -101,6 +103,7 @@
     font-size: 100px;
     margin: 20px;
     border-bottom: solid wheat;
+    font-weight: 100;
 }
 
 #monthDiv {
