@@ -54,3 +54,8 @@ Either create a new account or use the ready made accounts listed above! Demo ac
 #### TEAL INDICATES THERE IS A SCHEDULE ON IT
 #### CLICK ON THE HIGHLIGHTED DATE TO SHOW THE DESCRIPTION OF IT (ONLY AVAILABLE IN DASHBOARD)
 #### TO CHANGE/DELETE TASKS/SCHEDULE PLEASE GO TO BACK TO THE SCHEDULE/TASK EDITORS!
+
+*DEVELOPER NOTES*
+
+* Planning to change overall design of the dashboard and adding more functionalities
+* Planning to have it more streamlined in terms of design and build quality when adding/deleting tasks/schedule
